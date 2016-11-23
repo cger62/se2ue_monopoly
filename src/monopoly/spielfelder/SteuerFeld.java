@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * 
  */
-public class SteuerFeld {
+public class SteuerFeld implements Spielfelder {
 
     /**
      * Default constructor

@@ -1,67 +1,85 @@
 package monopoly.spieler;
 
-
 import monopoly.spielfelder.Spielfelder;
 import java.util.*;
+import monopoly.bank.Bank;
 
 /**
- * 
+ *
  */
 public class Spieler {
 
     /**
-     * Default constructor
-     */
-    public Spieler() {
-    }
-
-    /**
-     * 
+     *
      */
     private boolean istBank;
 
     /**
-     * 
+     *
      */
     private int kontostand;
 
     /**
-     * 
+     *
      */
     private String spielfigur;
 
     /**
-     * 
+     *
      */
     public boolean istGefängnis;
 
     /**
-     * 
+     *
      */
-    public Array<Spielfelder> felderInBesitz;
-
-
-
+    public ArrayList<Spielfelder> felderInBesitz;
 
     /**
-     * @param istBank 
-     * @param kontostand 
-     * @param spielfigur 
-     * @param istGefängnis
+     *
      */
-    public void Spieler(boolean istBank, int kontostand, String spielfigur, boolean istGefängnis) {
-        // TODO implement here
+    private Bank bank;
+
+    /**
+     *
+     */
+    public int wuerfelZahl;
+
+    /**
+     *
+     */
+    public int aktuellesFeld;
+
+    public Spieler(String spielfigur, Bank bank) {
+        this.istBank = false;
+        this.kontostand = 1500;
+        this.spielfigur = spielfigur;
+        this.istGefängnis = false;
+        this.aktuellesFeld = 0;
+        this.bank = bank;
+        if (bank != null) {
+            this.istBank = true;
+        }
     }
 
     /**
-     * 
+     *
      */
     public void wuerfeln() {
-        // TODO implement here
+        String[] worte = {"Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs"};
+        wuerfelZahl = (int) (Math.random() * 6);
+        aktuellesFeld = +wuerfelZahl;
+        if (aktuellesFeld > 40) {
+
+            aktuellesFeld = aktuellesFeld - 40;
+        }
+
+        System.out.println(worte[wuerfelZahl] + " gewürfelt");
+        System.out.println("Du befindest dich auf Feld-Nr: " + aktuellesFeld);
+
     }
 
     /**
-     * @param wuerfelZahl 
+     * @param wuerfelZahl
      * @return
      */
     public Spielfelder spielfigurSetzen(int wuerfelZahl) {
@@ -89,19 +107,6 @@ public class Spieler {
     public int getKontostand() {
         // TODO implement here
         return 0;
-    }
-
-    /**
-     * 
-     */
-    public class Class1 {
-
-        /**
-         * Default constructor
-         */
-        public Class1() {
-        }
-
     }
 
 }
