@@ -74,6 +74,7 @@ public class Spieler {
         }
 
         System.out.println(worte[wuerfelZahl] + " gewürfelt");
+        spielfigurSetzen(wuerfelZahl);
         System.out.println("Du befindest dich auf Feld-Nr: " + aktuellesFeld);
 
     }
