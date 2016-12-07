@@ -23,12 +23,12 @@ import monopoly.spielfelder.Wasserwerk;
 /**
  *
  */
-public class Map {
+public class MonopolyMap {
 
     /**
      * Default constructor
      */
-    public Map() {
+    public MonopolyMap() {
 
         initMap();
 
@@ -87,7 +87,7 @@ public class Map {
                         spieler.add(new Spieler(name, null));
                     }
                 } catch (IOException ex) {
-                    Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -239,7 +239,7 @@ public class Map {
             spielfelder.add(schlossallee);
 
         } catch (IOException ex) {
-            Logger.getLogger(Map.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

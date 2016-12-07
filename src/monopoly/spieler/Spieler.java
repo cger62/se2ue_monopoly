@@ -3,6 +3,7 @@ package monopoly.spieler;
 import monopoly.spielfelder.Spielfelder;
 import java.util.*;
 import monopoly.bank.Bank;
+import monopoly.map.MonopolyMap;
 
 /**
  *
@@ -59,6 +60,8 @@ public class Spieler {
         if (bank != null) {
             this.istBank = true;
         }
+        MonopolyMap m = new MonopolyMap();
+        
     }
 
     /**
@@ -74,7 +77,7 @@ public class Spieler {
         }
 
         System.out.println(worte[wuerfelZahl] + " gewürfelt");
-        spielfigurSetzen(wuerfelZahl);
+        spielfigurSetzen(aktuellesFeld);
         System.out.println("Du befindest dich auf Feld-Nr: " + aktuellesFeld);
 
     }
@@ -83,9 +86,8 @@ public class Spieler {
      * @param wuerfelZahl
      * @return
      */
-    public Spielfelder spielfigurSetzen(int wuerfelZahl) {
-        // TODO implement here
-        return null;
+    public Spielfelder spielfigurSetzen(int feldNummer) {
+       for()
     }
 
     /**
