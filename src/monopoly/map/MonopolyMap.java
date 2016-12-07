@@ -119,7 +119,7 @@ public class MonopolyMap {
             spielfelder.add(zusatzsteuer);
 
             SteuerFeld einkommenssteuer = new SteuerFeld();
-            einkommenssteuer.feldnummer = 5;
+            einkommenssteuer.setFeldnummer(5);
             spielfelder.add(einkommenssteuer);
 
             // LosFeld
@@ -136,7 +136,7 @@ public class MonopolyMap {
             GefängnisFeld gefängnis = new GefängnisFeld();
             spielfelder.add(gefängnis);
             NurZuBesuchFeld besuchGefängnis = new NurZuBesuchFeld();
-            besuchGefängnis.feldnummer = 11;
+            besuchGefängnis.setFeldnummer(11);
             spielfelder.add(besuchGefängnis);
 
             //Ereigns- und Gemeinschaftsfelder

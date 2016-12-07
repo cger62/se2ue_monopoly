@@ -8,28 +8,26 @@ import java.util.*;
  */
 public class SteuerFeld implements Spielfelder {
 
-    /**
-     * Default constructor
-     */
+    private int feldnummer;
+
+    private int steuern;
+
+    //Default Constructor
     public SteuerFeld() {
     }
+    
+    
 
-    /**
-     * 
-     */
-    public int feldnummer;
-
-    /**
-     * 
-     */
-    public int steuern;
-
-    /**
-     * @param feldnummer 
-     * @param steuern
-     */
-    public void SteuerFeld(int feldnummer, int steuern) {
-        // TODO implement here
+    public SteuerFeld(int feldnummer, int steuern) {
+        this.feldnummer = feldnummer;
+        this.steuern = steuern;
+    }
+    
+    public void setFeldnummer(int feldnummer) {
+        this.feldnummer = feldnummer;
     }
 
+    public int getSteuern() {
+        return steuern;
+    }
 }

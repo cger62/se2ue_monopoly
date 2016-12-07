@@ -8,17 +8,17 @@ import java.util.*;
  */
 public class NurZuBesuchFeld extends GefängnisFeld {
 
-    /**
-     * Default constructor
-     */
+ private int feldnummer;
+
+ //Default Constructor
     public NurZuBesuchFeld() {
     }
 
-    /**
-     * @param feldnummer
-     */
-    public void NurZuBesuchFeld(int feldnummer) {
-        // TODO implement here
+    public NurZuBesuchFeld(int feldnummer) {
+        this.feldnummer = feldnummer;
     }
 
+    public void setFeldnummer(int feldnummer) {
+        this.feldnummer = feldnummer;
+    }
 }
