@@ -1,9 +1,12 @@
 package monopoly.spieler;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import monopoly.spielfelder.Spielfelder;
 import java.util.*;
 import monopoly.bank.Bank;
 import monopoly.map.MonopolyMap;
+import monopoly.spielfelder.BesitzrechtFeld;
 
 /**
  *
@@ -49,19 +52,23 @@ public class Spieler {
      *
      */
     public int aktuellesFeld;
+    InputStreamReader isr = new InputStreamReader(System.in);
+    BufferedReader br = new BufferedReader(isr);
 
-    public Spieler(String spielfigur, Bank bank) {
+    public Spieler(String spielfigur) {
         this.istBank = false;
         this.kontostand = 1500;
         this.spielfigur = spielfigur;
         this.istGefängnis = false;
         this.aktuellesFeld = 0;
-        this.bank = bank;
         if (bank != null) {
             this.istBank = true;
         }
-        MonopolyMap m = new MonopolyMap();
-        
+
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 
     /**
@@ -77,8 +84,20 @@ public class Spieler {
         }
 
         System.out.println(worte[wuerfelZahl] + " gewürfelt");
-        spielfigurSetzen(aktuellesFeld);
+        Spielfelder sf = spielfigurSetzen(aktuellesFeld);
         System.out.println("Du befindest dich auf Feld-Nr: " + aktuellesFeld);
+
+        if (!felderInBesitz.contains(sf)) {
+
+            BesitzrechtFeld bf = (BesitzrechtFeld) sf;
+
+            if (bf.isGekauft) {
+                bezahlen(bf);
+
+            } else {
+                kaufen(bf);
+            }
+        }
 
     }
 
@@ -86,15 +105,26 @@ public class Spieler {
      * @param wuerfelZahl
      * @return
      */
-    public Spielfelder spielfigurSetzen(int feldNummer) {
-       for()
+    public BesitzrechtFeld spielfigurSetzen(int feldNummer) {
+        for (int i = 1; i < MonopolyMap.spielfelder.size(); i++) {
+
+            if (i == feldNummer) {
+
+                return (BesitzrechtFeld) MonopolyMap.spielfelder.get(i);
+            }
+
+        }
+        return null;
     }
 
     /**
      * @param feld
      */
-    public void kaufen(Spielfelder feld) {
-        // TODO implement here
+    public void kaufen(BesitzrechtFeld feld) {
+        System.out.println("Dein Kontostand beträgt: " + kontostand);
+        System.out.println("Die kosten für: " + feld.feldname + " betragen :" + feld.grundstueckswert);
+        System.out.println("Möchtest du kaufen? (ja/nein)");
+
     }
 
     /**

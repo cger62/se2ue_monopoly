@@ -19,14 +19,6 @@ public class Bank {
      */
     private int kontostand;
 
-
-    /**
-     * 
-     */
-    public void Bank() {
-        // TODO implement here
-    }
-
     /**
      * @return
      */
