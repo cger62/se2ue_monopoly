@@ -8,11 +8,14 @@ import java.util.*;
  */
 public class BesitzrechtFeld implements Spielfelder {
 
-    /**
-     * Default constructor
+     /**
+     * @param feldnummer 
+     * @param feldname 
+     * @param grundstueckswert 
+     * @param hypothek 
+     * @param miete
      */
-    public BesitzrechtFeld() {
-    }
+  
 
     /**
      * 
@@ -49,16 +52,10 @@ public class BesitzrechtFeld implements Spielfelder {
      */
     public Boolean isHypothek;
 
-    /**
-     * @param feldnummer 
-     * @param feldname 
-     * @param grundstueckswert 
-     * @param hypothek 
-     * @param miete
-     */
-    public void BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete) {
+  public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete) {
         // TODO implement here
     }
+   
 
     /**
      * 
