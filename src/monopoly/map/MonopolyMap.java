@@ -37,7 +37,7 @@ public class MonopolyMap {
     /**
      *
      */
-    public ArrayList<Spielfelder> spielfelder;
+    public static ArrayList<Spielfelder> spielfelder;
 
     /**
      *
@@ -49,11 +49,20 @@ public class MonopolyMap {
      */
     public int anzahlSpieler;
 
+    public boolean isBank;
+
     /**
      *
      */
     private void initMap() {
         try {
+
+            //Spieler Array initialisieren
+            spieler = new ArrayList<>();
+
+            //SpielFelder Array initialisieren
+            spielfelder = new ArrayList<>();
+
             //StreamReader & Buffredreader
             InputStreamReader isr = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(isr);
@@ -72,19 +81,25 @@ public class MonopolyMap {
             }
 
             //Spieler initialisieren
-            for (int i = 0; i < anzahlSpieler; i++) {
+            for (int i = 1; i <= anzahlSpieler; i++) {
 
                 try {
                     System.out.println("Wie heisst Spieler-Nr.: " + i + " ?");
 
                     String name = br.readLine();
-                    System.out.println("Ist " + name + " die Bank?(ja/nein)");
-                    String bank = br.readLine();
-                    if (bank.trim().toLowerCase().equals("ja")) {
 
-                        spieler.add(new Spieler(name, new Bank()));
+                    if (isBank == false) {
+                        System.out.println("Ist " + name + " die Bank?(ja/nein)");
+                        String bank = br.readLine();
+                        if (bank.trim().toLowerCase().equals("ja")) {
+                            Spieler s = new Spieler(name);
+                            s.setBank(new Bank());
+                            isBank = true;
+                            spieler.add(s);
+
+                        }
                     } else {
-                        spieler.add(new Spieler(name, null));
+                        spieler.add(new Spieler(name));
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
