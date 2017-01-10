@@ -12,9 +12,9 @@ public class BesitzrechtFeld implements Spielfelder {
 
     private int feldnummer;
 
-    private String feldname;
+    public String feldname;
 
-    private int grundstueckswert;
+    public int grundstueckswert;
 
     private int hypothek;
 

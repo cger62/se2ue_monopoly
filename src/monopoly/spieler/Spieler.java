@@ -102,14 +102,16 @@ public class Spieler {
     }
 
     /**
-     * @param wuerfelZahl
+     * @param feldNummer
      * @return
      */
     public BesitzrechtFeld spielfigurSetzen(int feldNummer) {
         for (int i = 1; i < MonopolyMap.spielfelder.size(); i++) {
 
             if (i == feldNummer) {
-
+                if (feldNummer < aktuellesFeld) {
+                    einziehen(100);
+                }
                 return (BesitzrechtFeld) MonopolyMap.spielfelder.get(i);
             }
 
@@ -140,6 +142,14 @@ public class Spieler {
     public int getKontostand() {
         // TODO implement here
         return 0;
+    }
+
+    public void einzahlen(int i) {
+        kontostand = kontostand - i;
+    }
+
+    public void einziehen(int i) {
+        kontostand = kontostand + i;
     }
 
 }
