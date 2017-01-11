@@ -13,45 +13,22 @@ import monopoly.spielfelder.BesitzrechtFeld;
  */
 public class Spieler {
 
-    /**
-     *
-     */
     private boolean istBank;
 
-    /**
-     *
-     */
     private int kontostand;
 
-    /**
-     *
-     */
     private String spielfigur;
 
-    /**
-     *
-     */
     public boolean istGefängnis;
 
-    /**
-     *
-     */
     public ArrayList<Spielfelder> felderInBesitz;
 
-    /**
-     *
-     */
     private Bank bank;
 
-    /**
-     *
-     */
     public int wuerfelZahl;
 
-    /**
-     *
-     */
     public int aktuellesFeld;
+    
     InputStreamReader isr = new InputStreamReader(System.in);
     BufferedReader br = new BufferedReader(isr);
 
@@ -134,6 +111,7 @@ public class Spieler {
      */
     public void bezahlen(Spielfelder feld) {
         // TODO implement here
+       
     }
 
     /**
@@ -141,7 +119,7 @@ public class Spieler {
      */
     public int getKontostand() {
         // TODO implement here
-        return 0;
+        return kontostand;
     }
 
     public void einzahlen(int i) {

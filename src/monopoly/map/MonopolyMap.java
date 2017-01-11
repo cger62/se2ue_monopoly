@@ -138,52 +138,40 @@ public class MonopolyMap {
             spielfelder.add(einkommenssteuer);
 
             // LosFeld
-            LosFeld.feldnummer = 1;
+            //LosFeld.feldnummer = 1;
             LosFeld losfeld = new LosFeld();
             spielfelder.add(losfeld);
 
             //FreiParken Feld
             FreiParkenFeld freiparken = new FreiParkenFeld();
-            FreiParkenFeld.feldnummer = 21;
+            //FreiParkenFeld.feldnummer = 21;
             spielfelder.add(freiparken);
 
             //Gefängnisfelder
             GefängnisFeld gefängnis = new GefängnisFeld();
             spielfelder.add(gefängnis);
+            
             NurZuBesuchFeld besuchGefängnis = new NurZuBesuchFeld();
             besuchGefängnis.setFeldnummer(11);
             spielfelder.add(besuchGefängnis);
 
             //Ereigns- und Gemeinschaftsfelder
-            EreignisgemeinschaftsFeld egF1 = new EreignisgemeinschaftsFeld();
-            egF1.feldnummer = 3;
-            egF1.feldname = "Gemeinschaftsfeld";
+            EreignisgemeinschaftsFeld egF1 = new EreignisgemeinschaftsFeld(3, "Gemeinschaftsfeld");
             spielfelder.add((Spielfelder) egF1);
 
-            EreignisgemeinschaftsFeld egF2 = new EreignisgemeinschaftsFeld();
-            egF2.feldnummer = 8;
-            egF2.feldname = "Ereignisfeld";
+            EreignisgemeinschaftsFeld egF2 = new EreignisgemeinschaftsFeld(8, "Ereignisfeld");
             spielfelder.add((Spielfelder) egF2);
 
-            EreignisgemeinschaftsFeld egF3 = new EreignisgemeinschaftsFeld();
-            egF3.feldnummer = 18;
-            egF3.feldname = "Gemeinschaftsfeld";
+            EreignisgemeinschaftsFeld egF3 = new EreignisgemeinschaftsFeld(18, "Gemeinschaftsfeld");
             spielfelder.add((Spielfelder) egF3);
 
-            EreignisgemeinschaftsFeld egF4 = new EreignisgemeinschaftsFeld();
-            egF4.feldnummer = 23;
-            egF4.feldname = "Ereignisfeld";
+            EreignisgemeinschaftsFeld egF4 = new EreignisgemeinschaftsFeld(23, "Ereignisfeld");
             spielfelder.add((Spielfelder) egF4);
 
-            EreignisgemeinschaftsFeld egF5 = new EreignisgemeinschaftsFeld();
-            egF5.feldnummer = 34;
-            egF5.feldname = "Gemeinschaftsfeld";
-
+            EreignisgemeinschaftsFeld egF5 = new EreignisgemeinschaftsFeld(34, "Gemeinschaftsfeld");
             spielfelder.add((Spielfelder) egF5);
 
-            EreignisgemeinschaftsFeld egF6 = new EreignisgemeinschaftsFeld();
-            egF6.feldnummer = 37;
-            egF6.feldname = "Ereignisfeld";
+            EreignisgemeinschaftsFeld egF6 = new EreignisgemeinschaftsFeld(37, "Ereignisfeld");
             spielfelder.add((Spielfelder) egF6);
 
             //Straßen-Felder

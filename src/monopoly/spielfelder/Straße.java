@@ -7,6 +7,11 @@ import java.util.*;
  * 
  */
 public class Straße extends BesitzrechtFeld {
+    
+    
+    private int anzahlHaueser;
+
+    private int kostenHaus;
 
     /**
      * Default constructor
@@ -20,15 +25,6 @@ public class Straße extends BesitzrechtFeld {
         super(feldnummer,feldname,grundstueckswert,hypothek,miete);
     }
 
-    /**
-     * 
-     */
-    public int anzahlHaueser;
-
-    /**
-     * 
-     */
-    public int kostenHaus;
 
     /**
      * @param anzahl

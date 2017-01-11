@@ -7,36 +7,24 @@ import java.util.*;
  * 
  */
 public class LosFeld implements Spielfelder {
+    
+    public int losGeld;
+
+    public int feldnummer;
 
     /**
      * Default constructor
      */
     public LosFeld() {
+        losGeld = 200;
+        feldnummer = 1; 
     }
 
     /**
-     * 
-     */
-    public static int losGeld;
-
-    /**
-     * 
-     */
-    public static int feldnummer;
-
-    /**
-     * 
-     */
-    public void LosFeld() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
+     * @return den festgelegten Betrag beim Überschreiten des Losfeldes 
      */
     public int auszahlen() {
-        // TODO implement here
-        return 0;
+        return 200;
     }
 
 }

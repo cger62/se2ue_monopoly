@@ -20,7 +20,7 @@ public class BesitzrechtFeld implements Spielfelder {
 
     private int miete;
 
-    private Boolean isGekauft;
+    public Boolean isGekauft;
 
     private Boolean isHypothek;
     

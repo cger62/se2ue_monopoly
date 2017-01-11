@@ -7,24 +7,17 @@ import java.util.*;
  * 
  */
 public class FreiParkenFeld implements Spielfelder {
+    
+     public int feldnummer;
 
     /**
      * Default constructor
      */
     public FreiParkenFeld() {
+        feldnummer = 21;
     }
 
-    /**
-     * 
-     */
-    public static int feldnummer;
+   
 
-
-    /**
-     * 
-     */
-    public void FreiParkenFeld() {
-        // TODO implement here
-    }
 
 }
