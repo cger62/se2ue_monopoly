@@ -244,16 +244,16 @@ public class Spieler {
                         int anzahl = Integer.parseInt(br.readLine());
 
                         Straße str = (Straße) feld;
-                        if (einzahlen(str.getKostenHaus() + anzahl)) {
+                        if (einzahlen(str.getKostenHaus() * anzahl)) {
+                            str.setAnzahlHaueser(str.getAnzahlHaueser()+anzahl);
                             if (str.getAnzahlHaueser() + anzahl > 4) {
-                                System.out.println("Möchtest du " + ((str.getAnzahlHaueser() + anzahl) - (str.getAnzahlHaueser() + anzahl % 4)) + " deiner " + str.getAnzahlHaueser() + anzahl + " in Hotels umwandeln?");
+                                System.out.println("Möchtest du " + ((str.getAnzahlHaueser()) - (str.getAnzahlHaueser() % 4)) + " deiner " + str.getAnzahlHaueser()+ "Häuser in Hotels umwandeln?");
                                 if (br.readLine().trim().toLowerCase().equals("ja")) {
                                     str.setAnzahlHaueser(str.getAnzahlHaueser() + anzahl);
                                     hotelBauen(str);
                                 }
-                                if (br.readLine().trim().toLowerCase().equals("nein")) {
-                                    str.setAnzahlHaueser(str.getAnzahlHaueser() + anzahl);
-                                    einzahlen(str.getKostenHaus() * anzahl);
+                                else {
+                              
                                     System.out.println("Du hast für die Straße: " + str.getFeldname() + "," + anzahl + " Häuser gebaut, insgesamt hast du jetzt " + str.getAnzahlHaueser() + " Häuser");
 
                                 }
@@ -296,7 +296,7 @@ public class Spieler {
 
     private void hotelBauen(Straße str) {
         try {
-            System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaueser() / 4 + "bauen, wieviele möchtest du Bauen?");
+            System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaueser() / 4 + "Hotels bauen, wieviele möchtest du Bauen?");
             int anzahl = Integer.parseInt(br.readLine());
             if (anzahl <= (int) str.getAnzahlHaueser() / 4) {
                 str.setAnzahlHotels(anzahl);
