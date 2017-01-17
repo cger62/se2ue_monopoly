@@ -28,12 +28,6 @@ public class MonopolyMap {
     /**
      * Default constructor
      */
-    public MonopolyMap() {
-
-        initMap();
-
-    }
-
     /**
      *
      */
@@ -42,19 +36,17 @@ public class MonopolyMap {
     /**
      *
      */
-    public ArrayList<Spieler> spieler;
+    public static ArrayList<Spieler> spieler;
 
     /**
      *
      */
-    public int anzahlSpieler;
-
-    public boolean isBank;
+    public static int anzahlSpieler;
 
     /**
      *
      */
-    private void initMap() {
+    public MonopolyMap() {
         try {
 
             //Spieler Array initialisieren
@@ -88,19 +80,8 @@ public class MonopolyMap {
 
                     String name = br.readLine();
 
-                    if (isBank == false) {
-                        System.out.println("Ist " + name + " die Bank?(ja/nein)");
-                        String bank = br.readLine();
-                        if (bank.trim().toLowerCase().equals("ja")) {
-                            Spieler s = new Spieler(name);
-                            s.setBank(new Bank());
-                            isBank = true;
-                            spieler.add(s);
+                    spieler.add(new Spieler(name));
 
-                        }
-                    } else {
-                        spieler.add(new Spieler(name));
-                    }
                 } catch (IOException ex) {
                     Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -108,141 +89,178 @@ public class MonopolyMap {
             }
 
             //Bahnhofs-Felder
-            Bahnhof nordbahnhof = new Bahnhof(26, "Nordbahnhof", 25, 25, 25);
+            Bahnhof nordbahnhof = new Bahnhof(25, "Nordbahnhof", 25, 25, 25, "bahnhof");
             spielfelder.add(nordbahnhof);
 
-            Bahnhof westbahnhof = new Bahnhof(16, "Westbahnhof", 25, 25, 25);
+            Bahnhof westbahnhof = new Bahnhof(15, "Westbahnhof", 25, 25, 25, "bahnhof");
             spielfelder.add(westbahnhof);
 
-            Bahnhof suedbahnhof = new Bahnhof(6, "Südbahnhof", 25, 25, 25);
+            Bahnhof suedbahnhof = new Bahnhof(5, "Südbahnhof", 25, 25, 25, "bahnhof");
             spielfelder.add(suedbahnhof);
 
-            Bahnhof hauptbahnhof = new Bahnhof(36, "Hauptbahnhof", 25, 25, 25);
+            Bahnhof hauptbahnhof = new Bahnhof(35, "Hauptbahnhof", 25, 25, 25, "bahnhof");
             spielfelder.add(hauptbahnhof);
 
             //Wasserwerk-Feld
-            Wasserwerk wasserwerk = new Wasserwerk(29, "Wasserwerk", 25, 25, 25);
+            Wasserwerk wasserwerk = new Wasserwerk(28, "Wasserwerk", 25, 25, 25, "werk");
             spielfelder.add(wasserwerk);
 
             //Elektrizitätswerk-Feld
-            Elektrizitätswerk stromwerk = new Elektrizitätswerk(13, "Elektrizitätswerk", 25, 25, 25);
+            Elektrizitätswerk stromwerk = new Elektrizitätswerk(12, "Elektrizitätswerk", 25, 25, 25, "werk");
 
             spielfelder.add(stromwerk);
 
             //Steuer-Felder
-            SteuerFeld zusatzsteuer = new SteuerFeld();
+            SteuerFeld zusatzsteuer = new SteuerFeld(38, 25);
             spielfelder.add(zusatzsteuer);
 
-            SteuerFeld einkommenssteuer = new SteuerFeld();
-            einkommenssteuer.setFeldnummer(5);
+            SteuerFeld einkommenssteuer = new SteuerFeld(4, 24);
+
             spielfelder.add(einkommenssteuer);
 
             // LosFeld
-            //LosFeld.feldnummer = 1;
-            LosFeld losfeld = new LosFeld();
+            LosFeld losfeld = new LosFeld(0);
             spielfelder.add(losfeld);
 
             //FreiParken Feld
-            FreiParkenFeld freiparken = new FreiParkenFeld();
+            FreiParkenFeld freiparken = new FreiParkenFeld(20);
             //FreiParkenFeld.feldnummer = 21;
             spielfelder.add(freiparken);
 
             //Gefängnisfelder
-            GefängnisFeld gefängnis = new GefängnisFeld();
+            GefängnisFeld gefängnis = new GefängnisFeld(30);
             spielfelder.add(gefängnis);
-            
-            NurZuBesuchFeld besuchGefängnis = new NurZuBesuchFeld();
-            besuchGefängnis.setFeldnummer(11);
+
+            NurZuBesuchFeld besuchGefängnis = new NurZuBesuchFeld(10);
+
             spielfelder.add(besuchGefängnis);
 
             //Ereigns- und Gemeinschaftsfelder
-            EreignisgemeinschaftsFeld egF1 = new EreignisgemeinschaftsFeld(3, "Gemeinschaftsfeld");
+            EreignisgemeinschaftsFeld egF1 = new EreignisgemeinschaftsFeld(2, "Gemeinschaftsfeld");
             spielfelder.add((Spielfelder) egF1);
 
-            EreignisgemeinschaftsFeld egF2 = new EreignisgemeinschaftsFeld(8, "Ereignisfeld");
+            EreignisgemeinschaftsFeld egF2 = new EreignisgemeinschaftsFeld(7, "Ereignisfeld");
             spielfelder.add((Spielfelder) egF2);
 
-            EreignisgemeinschaftsFeld egF3 = new EreignisgemeinschaftsFeld(18, "Gemeinschaftsfeld");
+            EreignisgemeinschaftsFeld egF3 = new EreignisgemeinschaftsFeld(17, "Gemeinschaftsfeld");
             spielfelder.add((Spielfelder) egF3);
 
-            EreignisgemeinschaftsFeld egF4 = new EreignisgemeinschaftsFeld(23, "Ereignisfeld");
+            EreignisgemeinschaftsFeld egF4 = new EreignisgemeinschaftsFeld(22, "Ereignisfeld");
             spielfelder.add((Spielfelder) egF4);
 
-            EreignisgemeinschaftsFeld egF5 = new EreignisgemeinschaftsFeld(34, "Gemeinschaftsfeld");
+            EreignisgemeinschaftsFeld egF5 = new EreignisgemeinschaftsFeld(33, "Gemeinschaftsfeld");
             spielfelder.add((Spielfelder) egF5);
 
-            EreignisgemeinschaftsFeld egF6 = new EreignisgemeinschaftsFeld(37, "Ereignisfeld");
+            EreignisgemeinschaftsFeld egF6 = new EreignisgemeinschaftsFeld(36, "Ereignisfeld");
             spielfelder.add((Spielfelder) egF6);
 
             //Straßen-Felder
-            Straße badstr = new Straße(2, "Badstraße", 25, 25, 25);
+            Straße badstr = new Straße(1, "Badstraße", 25, 25, 25, "braun", 25, 25);
             spielfelder.add(badstr);
 
-            Straße turmstr = new Straße(4, "Turmstraße", 25, 25, 25);
+            Straße turmstr = new Straße(3, "Turmstraße", 25, 25, 25, "braun", 25, 25);
             spielfelder.add(turmstr);
 
-            Straße chausseestr = new Straße(7, "Chausseestraße", 25, 25, 25);
+            Straße chausseestr = new Straße(6, "Chausseestraße", 25, 25, 25, "hellblau", 25, 25);
             spielfelder.add(chausseestr);
 
-            Straße elisenstr = new Straße(9, "Elisenstraße", 25, 25, 25);
+            Straße elisenstr = new Straße(8, "Elisenstraße", 25, 25, 25, "hellblau", 25, 25);
             spielfelder.add(elisenstr);
 
-            Straße poststr = new Straße(10, "Poststraße", 25, 25, 25);
+            Straße poststr = new Straße(9, "Poststraße", 25, 25, 25, "hellblau", 25, 25);
             spielfelder.add(poststr);
 
-            Straße seestr = new Straße(12, "Seestraße", 25, 25, 25);
+            Straße seestr = new Straße(11, "Seestraße", 25, 25, 25, "pink", 25, 25);
             spielfelder.add(seestr);
 
-            Straße hafenstr = new Straße(14, "Hafenstraße", 25, 25, 25);
+            Straße hafenstr = new Straße(13, "Hafenstraße", 25, 25, 25, "pink", 25, 25);
             spielfelder.add(hafenstr);
 
-            Straße neuestr = new Straße(15, "Neue Straße", 25, 25, 25);
+            Straße neuestr = new Straße(14, "Neue Straße", 25, 25, 25, "pink", 25, 25);
             spielfelder.add(neuestr);
 
-            Straße muenchnerstr = new Straße(17, "Münchner Straße", 25, 25, 25);
+            Straße muenchnerstr = new Straße(16, "Münchner Straße", 25, 25, 25, "orange", 25, 25);
             spielfelder.add(muenchnerstr);
 
-            Straße wienerstr = new Straße(19, "Wiener Straße", 25, 25, 25);
+            Straße wienerstr = new Straße(18, "Wiener Straße", 25, 25, 25, "orange", 25, 25);
             spielfelder.add(wienerstr);
 
-            Straße berlinerstr = new Straße(20, "Berliner Straße", 25, 25, 25);
+            Straße berlinerstr = new Straße(19, "Berliner Straße", 25, 25, 25, "orange", 25, 25);
             spielfelder.add(berlinerstr);
 
-            Straße theaterstr = new Straße(22, "Theaterstraße", 25, 25, 25);
+            Straße theaterstr = new Straße(21, "Theaterstraße", 25, 25, 25, "rot", 25, 25);
             spielfelder.add(theaterstr);
 
-            Straße museumsstr = new Straße(24, "Museumsstraße", 25, 25, 25);
+            Straße museumsstr = new Straße(23, "Museumsstraße", 25, 25, 25, "rot", 25, 25);
             spielfelder.add(museumsstr);
 
-            Straße opernplatz = new Straße(25, "Opernplatz", 25, 25, 25);
+            Straße opernplatz = new Straße(24, "Opernplatz", 25, 25, 25, "rot", 25, 25);
             spielfelder.add(opernplatz);
 
-            Straße lessingstr = new Straße(27, "Lessingstraße", 25, 25, 25);
+            Straße lessingstr = new Straße(26, "Lessingstraße", 25, 25, 25, "gelb", 25, 25);
             spielfelder.add(lessingstr);
 
-            Straße schillerstr = new Straße(28, "Schillerstraße", 25, 25, 25);
+            Straße schillerstr = new Straße(27, "Schillerstraße", 25, 25, 25, "gelb", 25, 25);
             spielfelder.add(schillerstr);
 
-            Straße goethestr = new Straße(30, "Goethestraße", 25, 25, 25);
+            Straße goethestr = new Straße(29, "Goethestraße", 25, 25, 25, "gelb", 25, 25);
             spielfelder.add(goethestr);
 
-            Straße rathausplatz = new Straße(32, "Rathausplatz", 25, 25, 25);
+            Straße rathausplatz = new Straße(31, "Rathausplatz", 25, 25, 25, "grün", 25, 25);
             spielfelder.add(rathausplatz);
 
-            Straße hauptstr = new Straße(33, "Hauptstraße", 25, 25, 25);
+            Straße hauptstr = new Straße(32, "Hauptstraße", 25, 25, 25, "grün", 25, 25);
             spielfelder.add(hauptstr);
 
-            Straße bahnhofsstr = new Straße(35, "Bahnhofstraße", 25, 25, 25);
+            Straße bahnhofsstr = new Straße(34, "Bahnhofstraße", 25, 25, 25, "grün", 25, 25);
             spielfelder.add(bahnhofsstr);
 
-            Straße parkstr = new Straße(38, "Parkstraße", 25, 25, 25);
+            Straße parkstr = new Straße(37, "Parkstraße", 25, 25, 25, "dunkelblau", 25, 25);
             spielfelder.add(parkstr);
 
-            Straße schlossallee = new Straße(40, "Schlossallee", 25, 25, 25);
+            Straße schlossallee = new Straße(39, "Schlossallee", 25, 25, 25, "dunkelblau", 25, 25);
             spielfelder.add(schlossallee);
+
+            for (Spielfelder s : spielfelder) {
+                System.out.println(s.getFeldnummer());
+
+            }
 
         } catch (IOException ex) {
             Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static void spielerVerloren(String name) {
+
+        for (Spieler s : spieler) {
+            if (s.getSpielfigur().equals(name)) {
+
+                Bank.einzahlen(s.getKontostand());
+
+                spieler.remove(s);
+                anzahlSpieler = anzahlSpieler - 1;
+            }
+        }
+
+    }
+
+    public void spielen() {
+        if (spieler.size() == 1) {
+            System.out.println("Spiel beendet, Spieler :" + spieler.get(1) + " hat gewonnen");
+
+        }
+
+        while (spieler.size() != 1) {
+            int i = 0;
+            for (Spieler s : spieler) {
+                
+                System.out.println("------------------------------");
+                System.out.println("Spieler: " + s.getSpielfigur() + " ist an der Reihe");
+                spieler.get(i).wuerfeln();
+                i = +1;
+            }
         }
 
     }

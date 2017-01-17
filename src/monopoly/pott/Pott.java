@@ -2,6 +2,7 @@ package monopoly.pott;
 
 
 import java.util.*;
+import monopoly.bank.Bank;
 
 /**
  * 
@@ -24,25 +25,31 @@ public class Pott {
      * 
      */
     public void Pott() {
-        // TODO implement here
+        kontostand=0;
     }
 
     /**
      * @param wert
      */
-    public void einzahlen(int wert) {
+   public  int auszahlen(int betrag) {
         // TODO implement here
+        kontostand =- betrag;
+        if(kontostand<0){
+        kontostand = Bank.auszahlen(kontostand*(-1));
+       
+        return betrag;
+        
+        }
+        else{
+        return betrag;}
     }
 
     /**
-     * @param wert 
-     * @return
+     * @param einzahlung
      */
-    public int auszahlen(int wert) {
-        // TODO implement here
-        return 0;
+    public  void  einzahlen(int einzahlung) {
+        kontostand =+ einzahlung;
     }
-
     /**
      * @return
      */

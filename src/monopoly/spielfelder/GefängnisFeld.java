@@ -6,15 +6,20 @@ import java.util.*;
 /**
  * 
  */
-public class GefängnisFeld implements Spielfelder {
+public class GefängnisFeld  implements Spielfelder{
     
-    public int feldnummer;
-
+  
+int feldnummer;
     /**
      * Default constructor
      */
-    public GefängnisFeld() {
-        feldnummer = 31;
+    public GefängnisFeld(int feldnummer) {
+        this.feldnummer = feldnummer;
+    }
+
+    @Override
+    public int getFeldnummer() {
+       return feldnummer; //To change body of generated methods, choose Tools | Templates.
     }
 
 

@@ -17,7 +17,10 @@ public class Monopoly {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
     MonopolyMap m = new MonopolyMap();
+   
+    m.spielen();
     }
     
 }

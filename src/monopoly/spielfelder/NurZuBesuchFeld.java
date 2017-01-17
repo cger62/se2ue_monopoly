@@ -6,19 +6,23 @@ import java.util.*;
 /**
  * 
  */
-public class NurZuBesuchFeld extends GefängnisFeld {
+public class NurZuBesuchFeld extends GefängnisFeld implements Spielfelder{
 
- private int feldnummer;
+ 
 
  //Default Constructor
-    public NurZuBesuchFeld() {
-    }
+  
 
     public NurZuBesuchFeld(int feldnummer) {
-        this.feldnummer = feldnummer;
+       super(feldnummer);
     }
 
     public void setFeldnummer(int feldnummer) {
         this.feldnummer = feldnummer;
+    }
+
+    @Override
+    public int getFeldnummer() {
+       return feldnummer;
     }
 }

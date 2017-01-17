@@ -6,15 +6,21 @@ import java.util.*;
 /**
  * 
  */
-public class FreiParkenFeld implements Spielfelder {
-    
-     public int feldnummer;
+public class FreiParkenFeld implements Spielfelder{
+    int feldnummer;
+     
 
     /**
      * Default constructor
      */
-    public FreiParkenFeld() {
-        feldnummer = 21;
+    public FreiParkenFeld(int feldnummer) {
+        this.feldnummer= feldnummer;
+          
+    }
+
+    @Override
+    public int getFeldnummer() {
+        return feldnummer; //To change body of generated methods, choose Tools | Templates.
     }
 
    

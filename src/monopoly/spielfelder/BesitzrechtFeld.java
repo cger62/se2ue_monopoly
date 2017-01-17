@@ -7,11 +7,11 @@ import monopoly.spieler.Spieler;
 /**
  * 
  */
-public class BesitzrechtFeld implements Spielfelder {
+public class BesitzrechtFeld  implements Spielfelder{
 
 
-    private int feldnummer;
-
+    
+int feldnummer;
     public String feldname;
 
     public int grundstueckswert;
@@ -20,11 +20,13 @@ public class BesitzrechtFeld implements Spielfelder {
 
     private int miete;
 
-    public Boolean isGekauft;
+    public Boolean isGekauft = false;
 
     private Boolean isHypothek;
     
     private Spieler spieler; //merken welchem Spieler das Feld gehört
+    
+    private String color ="";
 
   public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete) {
         this.feldnummer = feldnummer;
@@ -32,6 +34,15 @@ public class BesitzrechtFeld implements Spielfelder {
         this.grundstueckswert = grundstueckswert;
         this.hypothek = hypothek;
         this.miete = miete;
+    }
+  
+   public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete, String color) {
+      this.feldnummer = feldnummer;
+        this.feldname = feldname;
+        this.grundstueckswert = grundstueckswert;
+        this.hypothek = hypothek;
+        this.miete = miete;
+        this.color =color;
     }
 
     public void setHypothek(boolean isHypothek) {
@@ -66,6 +77,15 @@ public class BesitzrechtFeld implements Spielfelder {
     //welchem Spieler gehört das Feld
     public Spieler getSpieler() {
         return spieler;
+    }
+    
+        public String getColor() {
+        return color;
+    }
+
+    @Override
+    public int getFeldnummer() {
+         return feldnummer;//To change body of generated methods, choose Tools | Templates.
     }
 
 }

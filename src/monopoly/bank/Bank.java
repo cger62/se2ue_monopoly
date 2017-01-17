@@ -12,34 +12,36 @@ public class Bank {
      * Default constructor
      */
     public Bank() {
+        kontostand = 200000;
     }
 
     /**
      * 
      */
-    private int kontostand;
+    private static int kontostand;
 
     /**
      * @return
      */
-    public int auszahlen() {
+    public static int auszahlen(int betrag) {
         // TODO implement here
-        return 0;
+        kontostand =- betrag;
+        return betrag;
     }
 
     /**
      * @param einzahlung
      */
-    public void einzahlen(int einzahlung) {
-        // TODO implement here
+    public static void  einzahlen(int einzahlung) {
+        kontostand =+ einzahlung;
     }
 
     /**
      * @return
      */
-    public int getKontostand() {
+    public static int getKontostand() {
         // TODO implement here
-        return 0;
+        return kontostand;
     }
 
 }

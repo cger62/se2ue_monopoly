@@ -7,9 +7,9 @@ import java.util.*;
 /**
  * 
  */
-public class EreignisgemeinschaftsFeld implements Spielfelder {
+public class EreignisgemeinschaftsFeld implements Spielfelder{
 
-    private final int feldnummer;
+    int feldnummer;
     private final String feldname;
     public EreignisgemeinschaftsKarte[] karten = {new EreignisgemeinschaftsKarte(50, "Schulgeld", true),
                                                   new EreignisgemeinschaftsKarte(20, "Geburtstag", false),
@@ -33,7 +33,7 @@ public class EreignisgemeinschaftsFeld implements Spielfelder {
      * @param feldname
      */
     public EreignisgemeinschaftsFeld(int feldnummer, String feldname) {
-        this.feldnummer = feldnummer;
+       this.feldnummer = feldnummer;
         this.feldname = feldname;        
     }
     
@@ -41,5 +41,10 @@ public class EreignisgemeinschaftsFeld implements Spielfelder {
         int random = new Random().nextInt(karten.length);
         EreignisgemeinschaftsKarte result = (karten[random]); 
         return result;
+    }
+
+    @Override
+    public int getFeldnummer() {
+         return feldnummer; //To change body of generated methods, choose Tools | Templates.
     }
 }
