@@ -25,11 +25,12 @@ public class BesitzrechtFeld  implements Spielfelder{
     private String farbe ="";
 
     /**
+     * Erzeugt ein neues BesitzrechtFeld mit den uebergebenen Parametern.
      * 
-     * @param feldnummer
-     * @param feldname
-     * @param grundstueckswert
-     * @param miete 
+     * @param feldnummer die Nummer des Feldes
+     * @param feldname der Name des Feldes
+     * @param grundstueckswert der Wert, den das entsprechende Feld hat
+     * @param miete die Miete, die fuer das Feld zu zahlen ist
      */
   public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int miete) {
         this.feldnummer = feldnummer;
@@ -38,28 +39,36 @@ public class BesitzrechtFeld  implements Spielfelder{
         this.miete = miete;
     }
   
-   public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int miete, String color) {
+  /**
+   * Dieser Konstruktor bekommt zusaetzlich eine Farbe uebergeben.
+   * 
+   * @param feldnummer die Nummer des Feldes
+   * @param feldname der Name des Feldes
+   * @param grundstueckswert der Wert, den das entsprechende Feld hat
+   * @param miete die Miete, die fuer das Feld zu zahlen ist
+   * @param farbe die Farbe des BesitzrechtFeldes
+   */
+   public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int miete, String farbe) {
       this.feldnummer = feldnummer;
         this.feldname = feldname;
         this.grundstueckswert = grundstueckswert;
         this.miete = miete;
-        this.farbe =color;
+        this.farbe =farbe;
     }
 
-    
-    public void setGekauft(boolean isGekauft) {
-        this.istGekauft = isGekauft;
+    public void setGekauft(boolean istGekauft) {
+        this.istGekauft = istGekauft;
     }
     
     //wenn ein Feld von einem Spieler gekauft wird, muss der entsprechende Spieler im Attribut gesetzt werden
     public void setSpieler(Spieler spieler) {
         this.spieler = spieler;
     }
-    
+
     public String getFeldname() {
         return feldname;
     }
-    
+
     public int getGrundstueckswert() {
         return grundstueckswert;
     }
@@ -72,18 +81,21 @@ public class BesitzrechtFeld  implements Spielfelder{
         this.miete = miete;
     }
     
-    //welchem Spieler gehört das Feld
+    /**
+     * 
+     * @return spieler der Spieler, dem das Feld gehoert
+     */
     public Spieler getSpieler() {
         return spieler;
     }
-    
+
         public String getFarbe() {
         return farbe;
     }
 
     @Override
     public int getFeldnummer() {
-         return feldnummer;//To change body of generated methods, choose Tools | Templates.
+         return feldnummer;
     }
 
 }
