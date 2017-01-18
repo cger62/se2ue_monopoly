@@ -24,7 +24,12 @@ public class Wasserwerk extends BesitzrechtFeld implements Spielfelder{
 
     @Override
     public int getFeldnummer() {
-        return feldnummer;
+         return feldnummer;
+    }
+    
+    @Override
+    public String getFeldname() {
+        return feldname;
     }
 
 }

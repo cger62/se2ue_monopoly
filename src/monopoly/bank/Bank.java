@@ -24,7 +24,7 @@ public class Bank {
      * @return betrag der Betrag, der ausgezahlt wurde
      */
     public static int auszahlen(int betrag) {
-        kontostand =- betrag;
+        kontostand = kontostand - betrag;
         return betrag;
     }
 

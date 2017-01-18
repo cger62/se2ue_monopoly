@@ -27,8 +27,13 @@ public class NurZuBesuchFeld extends GefängnisFeld implements Spielfelder{
     /**
      * @return die Nummer des Feldes
      */
-    @Override
+     @Override
     public int getFeldnummer() {
-       return feldnummer;
+         return feldnummer;
+    }
+    
+    @Override
+    public String getFeldname() {
+        return feldname;
     }
 }

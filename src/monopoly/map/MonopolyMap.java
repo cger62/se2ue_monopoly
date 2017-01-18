@@ -234,7 +234,7 @@ public class MonopolyMap {
         for (Spieler s : spieler) {
             if (s.getSpielfigur().equals(name)) {
 
-               // Bank.einzahlen(s.getKontostand());
+               Bank.einzahlen(s.getKontostand());
                 System.out.println(s.getSpielfigur() + " ist Pleite und wird aus der Liste der Speielr entfernt");
                 spieler.remove(s);
                 anzahlSpieler = anzahlSpieler - 1;

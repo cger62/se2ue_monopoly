@@ -39,7 +39,7 @@ public class Spieler {
 
     public int wuerfelZahl;
 
-    public int aktuellesFeld =0;
+    public int aktuellesFeld = 0;
     public Spielfelder aktuellesFeldName;
     public HashMap<String, ArrayList> liste = new HashMap<>();
 
@@ -93,12 +93,12 @@ public class Spieler {
 
         if (istGefängnis) {
             //System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
-            int zahl = getRandomInteger(12,1);
+            int zahl = getRandomInteger(12, 1);
             System.out.println("Du bist im Gefängnis, würfel eine " + zahl + " um raus zu kommen, du kannst dann in der nächsten Runde weiterspielen");
             int wuerfel;
             boolean gefunden = false;
             for (int i = 0; i < 3; i++) {
-                wuerfel = getRandomInteger(12,1);
+                wuerfel = getRandomInteger(12, 1);
                 System.out.println("Du hast " + wuerfel + " gefwuerfelt");
                 if (wuerfel == zahl) {
                     System.out.println("Richtige Zahl ( " + wuerfel + " )du, kannst nächste runde weiterspielen");
@@ -106,23 +106,30 @@ public class Spieler {
                     gefunden = true;
                     return;
                 }
-                System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
 
             }
             if (!gefunden) {
                 System.out.println("Leider war die richtige Zahl nicht dabei, du zahlst 1000 Euro und darfst nächste Runde weiterspielen");
                 istGefängnis = false;
-                einzahlen(1000);
-                return;
+                ;
+                boolean einzahlen = einzahlen(1000);
+                if (!einzahlen) {
+                    //System.out.println("Du bist pleite und aus dem Spiel");
+                    MonopolyMap.spielerVerloren(spielfigur);
+                    return;
+                } else {
+                    System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
+                    return;
+                }
             }
 
         }
         //System.out.println(this.aktuellesFeld);
         String[] worte = {"Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun", "Zehn", "Elf", "Zwölf"};
 
-        wuerfelZahl = getRandomInteger(12,1);
+        wuerfelZahl = getRandomInteger(12, 1);
 
-        this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl+1 ;
+        this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl + 1;
         //System.out.println(this.aktuellesFeld);
         if (this.aktuellesFeld > 39) {
             auszahlen(4000);
@@ -155,7 +162,7 @@ public class Spieler {
             if (aktuellesFeldName instanceof FreiParkenFeld) {
                 System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
                 System.out.println("Glückwunsch, du bist auf Frei Parken und erhälst den gesamten Pott in Höhe von: " + Pott.getKontostand());
-                kontostand = kontostand +Pott.auszahlen(Pott.getKontostand());
+                kontostand = kontostand + Pott.auszahlen(Pott.getKontostand());
                 System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
 
             }
@@ -170,7 +177,13 @@ public class Spieler {
                 EreignisgemeinschaftsFeld ereignis = (EreignisgemeinschaftsFeld) aktuellesFeldName;
                 EreignisgemeinschaftsKarte randomKarte = ereignis.randomKarte();
                 randomKarte.ereignis(this);
-                System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
+                boolean einzahlen = einzahlen(0);
+                if (!einzahlen) {
+                    //System.out.println("Du bist pleite und aus dem Spiel");
+                    MonopolyMap.spielerVerloren(spielfigur);
+                } else {
+                    System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
+                }
             }
 
             if (aktuellesFeldName instanceof SteuerFeld) {
@@ -178,16 +191,28 @@ public class Spieler {
                 if (s.getFeldnummer() == 4) {
                     System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
                     System.out.println("Du musst 4000 Euro  Einkommenssteuer Zahlen");
-                    Pott.einzahlen(s.getSteuern());
-                     kontostand = kontostand-s.getSteuern();
-                    System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
+                    boolean einzahlen = einzahlen(4000);
+                    if (!einzahlen) {
+                        //System.out.println("Du bist pleite und aus dem Spiel");
+                        MonopolyMap.spielerVerloren(spielfigur);
+                    } else {
+                        Pott.einzahlen(s.getSteuern());
+                        kontostand = kontostand - s.getSteuern();
+                        System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
+                    }
                 }
                 if (s.getFeldnummer() == 38) {
                     System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
                     System.out.println("Du musst 2000 Euro Zusatzsteuer Zahlen");
-                    Pott.einzahlen(s.getSteuern());
-                    kontostand = kontostand-s.getSteuern();
-                    System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
+                    boolean einzahlen = einzahlen(2000);
+                    if (!einzahlen) {
+                        //System.out.println("Du bist pleite und aus dem Spiel");
+                        MonopolyMap.spielerVerloren(spielfigur);
+                    } else {
+                        Pott.einzahlen(s.getSteuern());
+                        kontostand = kontostand - s.getSteuern();
+                        System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
+                    }
                 }
             }
 
@@ -215,8 +240,9 @@ public class Spieler {
                     kaufen(bf);
                 }
             }
+        } else {
+            System.out.println("Das Feld: " + aktuellesFeldName.getFeldname() + "(Nr: " + aktuellesFeldName.getFeldnummer() + ")gehört dir!");
         }
-        else{System.out.println("Das Feld: "+aktuellesFeldName.getFeldname() +"(Nr: "+aktuellesFeldName.getFeldnummer()+ ")gehört dir!");}
     }
 
     /**
@@ -273,7 +299,8 @@ public class Spieler {
                                 hausBauen(feld);
                                 mieteÄndernStraße(hellblau);
                                 break;
-                            }break;
+                            }
+                            break;
                         case "pink":
                             pink.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
@@ -282,7 +309,8 @@ public class Spieler {
                                 hausBauen(feld);
                                 mieteÄndernStraße(pink);
                                 break;
-                            }break;
+                            }
+                            break;
                         case "orange":
                             orange.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
@@ -327,17 +355,18 @@ public class Spieler {
                             dunkelblau.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
                             System.out.println("Du hast " + dunkelblau.size() + " von 2 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
-                            if (dunkelblau.size() == 2){
-                            hausBauen(feld);
-                            mieteÄndernStraße(dunkelblau);
-                            break;}
+                            if (dunkelblau.size() == 2) {
+                                hausBauen(feld);
+                                mieteÄndernStraße(dunkelblau);
+                                break;
+                            }
                             break;
                         case "bahnhof":
                             bahnhoefe.add((Bahnhof) feld);
                             System.out.println("Du hast den Bahnhof: " + feld.getFeldname() + " gekauft!");
                             System.out.println("Du hast " + bahnhoefe.size() + " von 4 Bahnhöfen in deinem Besitz");
                             mieteÄndernBahnhof();
-                            
+
                             break;
                         case "werk":
                             werke.add(feld);
@@ -448,7 +477,7 @@ public class Spieler {
     private void hotelBauen(Straße str) {
         try {
             System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaeuser() / 4 + "Hotels bauen, wieviele möchtest du Bauen?");
-             System.out.println("Ein Hotel kostet: " + str.getKostenHotel());
+            System.out.println("Ein Hotel kostet: " + str.getKostenHotel());
             int anzahl = Integer.parseInt(br.readLine());
             if (anzahl <= (int) str.getAnzahlHaeuser() / 4) {
                 str.setAnzahlHotels(anzahl);
@@ -492,7 +521,8 @@ public class Spieler {
     }
 
     public String meinStatus() {
-        try { System.out.println("--------------------STATUS--------------------");
+        try {
+            System.out.println("--------------------STATUS--------------------");
             System.out.println("Spielfigur: " + spielfigur);
             System.out.println("Kontostand: " + kontostand);
             System.out.println("Aktuell befindest du dich auf: " + this.aktuellesFeldName.getFeldname());
@@ -527,26 +557,22 @@ public class Spieler {
 
         for (Straße s : strassen) {
             s.setMiete(s.getMiete() * 2);
-            
+
             if (s.getAnzahlHaeuser() > 0) {
                 s.setMiete(s.getMiete() * (s.getAnzahlHaeuser() * 5));
-                
+
             }
             if (s.getAnzahlHotels() > 0) {
                 s.setMiete(s.getMiete() * (s.getAnzahlHotels() * 10));
-                
-                    
-                
-            }System.out.println("Miete der Straße: " + s.getFeldname() + " beträgt: " + s.getMiete());
+
+            }
+            System.out.println("Miete der Straße: " + s.getFeldname() + " beträgt: " + s.getMiete());
         }
 
     }
-     public static int getRandomInteger(int maximum, int minimum){
-        return ((int) (Math.random()*(maximum - minimum))) + minimum;
+
+    public static int getRandomInteger(int maximum, int minimum) {
+        return ((int) (Math.random() * (maximum - minimum))) + minimum;
     }
-
-
-
-
 
 }

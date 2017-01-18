@@ -15,8 +15,13 @@ public class Bahnhof extends BesitzrechtFeld implements Spielfelder {
     }
     
     @Override
-    public String getFeldname(){
-    return feldname;
+    public int getFeldnummer() {
+         return feldnummer;
+    }
+    
+    @Override
+    public String getFeldname() {
+        return feldname;
     }
 
 }

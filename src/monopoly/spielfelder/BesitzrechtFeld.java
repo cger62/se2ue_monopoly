@@ -65,9 +65,7 @@ public class BesitzrechtFeld  implements Spielfelder{
         this.spieler = spieler;
     }
 
-    public String getFeldname() {
-        return feldname;
-    }
+  
 
     public int getGrundstueckswert() {
         return grundstueckswert;
@@ -97,5 +95,11 @@ public class BesitzrechtFeld  implements Spielfelder{
     public int getFeldnummer() {
          return feldnummer;
     }
+    
+    @Override
+    public String getFeldname() {
+        return feldname;
+    }
+  
 
 }

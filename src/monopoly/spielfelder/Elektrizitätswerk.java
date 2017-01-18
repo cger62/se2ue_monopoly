@@ -17,7 +17,12 @@ public class Elektrizitätswerk extends BesitzrechtFeld implements Spielfelder {
 
     @Override
     public int getFeldnummer() {
-        return feldnummer;//To change body of generated methods, choose Tools | Templates.
+         return feldnummer;
+    }
+    
+    @Override
+    public String getFeldname() {
+        return feldname;
     }
 
 }
