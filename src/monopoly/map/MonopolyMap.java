@@ -244,6 +244,7 @@ public class MonopolyMap {
     }
 
     public void spielen() {
+        
         if (spieler.size() == 1) {
             System.out.println("Spiel beendet, Spieler :" + spieler.get(1) + " hat gewonnen");
 
@@ -253,9 +254,10 @@ public class MonopolyMap {
             //int i = 0;
             for (Spieler s : spieler) {
                 
-                
+                System.out.println("------------------------------");
                 System.out.println("Spieler: " + s.getSpielfigur() + " ist an der Reihe");
                 s.wuerfeln();
+                System.out.println("------------------------------");
                 
                 //i = +1;
                 

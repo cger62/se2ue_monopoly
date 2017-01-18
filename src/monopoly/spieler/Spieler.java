@@ -232,58 +232,77 @@ public class Spieler {
                     switch (feld.getColor()) {
                         case "braun":
                             braun.add(feld);
-                            if (braun.size() == 2) {
+                             System.out.println("Du hast die Straße: "+feld.getFeldname() + "("+feld.getColor()+ ") gekauft!");
+                            System.out.println("Du hast "+braun.size() + "von 2 Feldern ("+ feld.getColor() +") in deinem Besitz");
+                             if (braun.size() == 2) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "hellblau":
                             hellblau.add(feld);
+                            System.out.println("Du hast die Straße: "+feld.getFeldname() + "("+feld.getColor()+ ") gekauft!");
+                            System.out.println("Du hast "+hellblau.size() + "von 3 Feldern ("+ feld.getColor() +") in deinem Besitz");
                             if (hellblau.size() == 3) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "pink":
                             pink.add(feld);
+                            System.out.println("Du hast die Straße: "+feld.getFeldname() + "("+feld.getColor()+ ") gekauft!");
+                            System.out.println("Du hast "+pink.size() + "von 3 Feldern ("+ feld.getColor() +") in deinem Besitz");
                             if (pink.size() == 3) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "orange":
                             orange.add(feld);
+                            System.out.println("Du hast die Straße: "+feld.getFeldname() + "("+feld.getColor()+ ") gekauft!");
+                             System.out.println("Du hast "+orange.size() + "von 3 Feldern ("+ feld.getColor() +") in deinem Besitz");
                             if (orange.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "rot":
                             rot.add(feld);
+                            System.out.println("Du hast die Straße: "+feld.getFeldname() + "("+feld.getColor()+ ") gekauft!");
+                             System.out.println("Du hast "+rot.size() + "von 3 Feldern ("+ feld.getColor() +") in deinem Besitz");
                             if (rot.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "gelb":
                             gelb.add(feld);
+                            System.out.println("Du hast die Straße: "+feld.getFeldname() + "("+feld.getColor()+ ") gekauft!");
+                            System.out.println("Du hast "+gelb.size() + "von 3 Feldern ("+ feld.getColor() +") in deinem Besitz");
                             if (gelb.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "grün":
                             grün.add(feld);
+                            System.out.println("Du hast die Straße: "+feld.getFeldname() + "("+feld.getColor()+ ") gekauft!");
+                             System.out.println("Du hast "+grün.size() + "von 3 Feldern ("+ feld.getColor() +") in deinem Besitz");
                             if (grün.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "dunkelblau":
                             dunkelblau.add(feld);
+                            System.out.println("Du hast die Straße: "+feld.getFeldname() + "("+feld.getColor()+ ") gekauft!");
+                            System.out.println("Du hast "+dunkelblau.size() + "von 2 Feldern ("+ feld.getColor() +") in deinem Besitz");
                             if (dunkelblau.size() == 2);
                             hausBauen(feld);
                             break;
                         case "bahnhof":
                             bahnhoefe.add(feld);
+                            System.out.println("Du hast den Bahnhof: "+feld.getFeldname() + " gekauft!");
+                             System.out.println("Du hast "+bahnhoefe.size() + "von 4 Bahnhöfen in deinem Besitz");
                             mieteÄndernBahnhof();
                             break;
                         case "werk":
                             werke.add(feld);
-
+                             System.out.println("Du hast das Werk: "+feld.getFeldname() + " gekauft!");
+                               System.out.println("Du hast "+werke.size() + "von 2 Werken in deinem Besitz");
                             break;
                         default:
                             System.out.println("Feld konnte keiner Farbe/Kategorie zugeordnet werden");
@@ -309,6 +328,7 @@ System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
             MonopolyMap.spielerVerloren(spielfigur);
         } else {
             spieler.auszahlen(feld.getMiete());
+            System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
         }
 
     }
@@ -338,7 +358,7 @@ System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
                                 } else {
 
                                     System.out.println("Du hast für die Straße: " + str.getFeldname() + "," + anzahl + " Häuser gebaut, insgesamt hast du jetzt " + str.getAnzahlHaueser() + " Häuser");
-
+                                    System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());  
                                 }
                             }
                         }
