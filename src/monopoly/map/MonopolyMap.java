@@ -244,13 +244,16 @@ public class MonopolyMap {
     }
 
     public void spielen() {
-        
+    
+
+        while (spieler.size() >= 1) {
+            
+                
         if (spieler.size() == 1) {
-            System.out.println("Spiel beendet, Spieler :" + spieler.get(1) + " hat gewonnen");
+            System.out.println("Spiel beendet, Spieler :" + spieler.get(0) + " hat gewonnen");
+            break;
 
         }
-
-        while (spieler.size() != 1) {
             //int i = 0;
             for (Spieler s : spieler) {
                 
