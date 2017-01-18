@@ -34,9 +34,10 @@ public class Pott {
    public  static int auszahlen(int betrag) {
         // TODO implement here
         kontostand =- betrag;
+        System.out.println("Im Pott befinden sich: "+kontostand);
         if(kontostand<0){
         kontostand = Bank.auszahlen(kontostand*(-1));
-       
+        System.out.println("Im Pott befinden sich: "+kontostand);
         return betrag;
         
         }
@@ -49,6 +50,7 @@ public class Pott {
      */
     public static void  einzahlen(int einzahlung) {
         kontostand =+ einzahlung;
+        System.out.println("Im Pott befinden sich: "+kontostand);
     }
     /**
      * @return

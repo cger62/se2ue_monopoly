@@ -118,19 +118,22 @@ public class Spieler {
         //System.out.println(this.aktuellesFeld);
         String[] worte = {"Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun", "Zehn", "Elf", "Zwölf"};
 
-        wuerfelZahl = (int) (Math.random() * 12) + 1;
+        wuerfelZahl = (int) (Math.random() * 11) ;
 
-        this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl + 1;
+        this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl+1;
         //System.out.println(this.aktuellesFeld);
         if (this.aktuellesFeld > 39) {
-            auszahlen(200);
+            auszahlen(4000);
+            System.out.println("Du gehst über Los und erhälst 4000 Mark");
             this.aktuellesFeld = this.aktuellesFeld - 39;
         }
         if (this.aktuellesFeld == 40) {
             this.aktuellesFeld = 0;
+            System.out.println("Du bist auf Los und erhälst 4000 Mark");
+             auszahlen(4000);
         }
 
-        System.out.println(worte[wuerfelZahl - 1] + " gewürfelt");
+        System.out.println(worte[wuerfelZahl] + " gewürfelt");
         aktuellesFeldName = spielfigurSetzen(this.aktuellesFeld);
         System.out.println("Du befindest dich auf Feld-Nr: " + (this.aktuellesFeld));
         System.out.println("Feld-Name: " + aktuellesFeldName.getFeldname());
