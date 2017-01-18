@@ -1,38 +1,40 @@
 package monopoly.spielfelder;
 
-
-import java.util.*;
 import monopoly.spieler.Spieler;
 
 /**
+ * Diese Klasse dient als Super-Klasse fuer die restlichen Felder.
  * 
+ * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
+
 public class BesitzrechtFeld  implements Spielfelder{
 
-
+    int feldnummer;
     
-int feldnummer;
     public String feldname;
 
     public int grundstueckswert;
 
-    private int hypothek;
-
     private int miete;
 
-    public Boolean isGekauft = false;
-
-    private Boolean isHypothek;
+    public Boolean istGekauft = false;
     
     private Spieler spieler; //merken welchem Spieler das Feld gehört
     
-    private String color ="";
+    private String farbe ="";
 
-  public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete) {
+    /**
+     * 
+     * @param feldnummer
+     * @param feldname
+     * @param grundstueckswert
+     * @param miete 
+     */
+  public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int miete) {
         this.feldnummer = feldnummer;
         this.feldname = feldname;
         this.grundstueckswert = grundstueckswert;
-        this.hypothek = hypothek;
         this.miete = miete;
     }
   
@@ -40,17 +42,13 @@ int feldnummer;
       this.feldnummer = feldnummer;
         this.feldname = feldname;
         this.grundstueckswert = grundstueckswert;
-        this.hypothek = hypothek;
         this.miete = miete;
-        this.color =color;
+        this.farbe =color;
     }
 
-    public void setHypothek(boolean isHypothek) {
-        this.isHypothek = isHypothek;
-    }
     
     public void setGekauft(boolean isGekauft) {
-        this.isGekauft = isGekauft;
+        this.istGekauft = isGekauft;
     }
     
     //wenn ein Feld von einem Spieler gekauft wird, muss der entsprechende Spieler im Attribut gesetzt werden
@@ -65,11 +63,7 @@ int feldnummer;
     public int getGrundstueckswert() {
         return grundstueckswert;
     }
-    
-    public int getHypothek() {
-        return hypothek;
-    }
-    
+
     public int getMiete() {
         return miete;
     }
@@ -83,8 +77,8 @@ int feldnummer;
         return spieler;
     }
     
-        public String getColor() {
-        return color;
+        public String getFarbe() {
+        return farbe;
     }
 
     @Override

@@ -1,46 +1,46 @@
 package monopoly.bank;
 
 
-import java.util.*;
-
 /**
+ * Diese Klasse realisiert die Bank des Spiels und ermoeglicht Ein- und
+ * Auszahlungen.
  * 
+ * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public class Bank {
+    
+    private static int kontostand;
 
-    /**
-     * Default constructor
-     */
     public Bank() {
         kontostand = 200000;
     }
 
+    
     /**
+     * Zahlt den uebergebenen Betrag von der Bank an einen
+     * Spieler aus.
      * 
-     */
-    private static int kontostand;
-
-    /**
-     * @return
+     * @param betrag der Betrag, der an einen Spieler ausgezahlt werden soll
+     * @return betrag der Betrag, der ausgezahlt wurde
      */
     public static int auszahlen(int betrag) {
-        // TODO implement here
         kontostand =- betrag;
         return betrag;
     }
 
     /**
-     * @param einzahlung
+     * Ein Spieler zahlt den uebergebenen Betrag an die Bank.
+     * 
+     * @param einzahlung der Betrag, der an die Bank gezahlt werden muss
      */
     public static void  einzahlen(int einzahlung) {
         kontostand =+ einzahlung;
     }
 
     /**
-     * @return
+     * @return den aktuellen Kontostand
      */
     public static int getKontostand() {
-        // TODO implement here
         return kontostand;
     }
 

@@ -11,22 +11,22 @@ public class EreignisgemeinschaftsFeld implements Spielfelder{
 
     int feldnummer;
     private final String feldname;
-    public EreignisgemeinschaftsKarte[] karten = {new EreignisgemeinschaftsKarte(50, "Schulgeld", true),
-                                                  new EreignisgemeinschaftsKarte(20, "Geburtstag", false),
-                                                  new EreignisgemeinschaftsKarte(80, "Krankenhaus", true),
-                                                  new EreignisgemeinschaftsKarte(15, "Strafzettel", true),
-                                                  new EreignisgemeinschaftsKarte(50, "Urlaubsgeld", false),
-                                                  new EreignisgemeinschaftsKarte(100, "Versicherung", true),
-                                                  new EreignisgemeinschaftsKarte(10, "Schönheitswettbewerb", false),
-                                                  new EreignisgemeinschaftsKarte(50, "Wette", false),
-                                                  new EreignisgemeinschaftsKarte(200, "Los", false),
-                                                  new EreignisgemeinschaftsKarte(0, "Gefängnis", false),
-                                                  new EreignisgemeinschaftsKarte(0, "Südbahnhof", false),
-                                                  new EreignisgemeinschaftsKarte(0, "Opernplatz", false),
-                                                  new EreignisgemeinschaftsKarte(0, "Schlossallee", false),
-                                                  new EreignisgemeinschaftsKarte(0, "Seestraße", false),
-                                                  new EreignisgemeinschaftsKarte(0, "3zurück", false),
-                                                  new EreignisgemeinschaftsKarte(0, "3vor", false)};
+    public EreignisgemeinschaftsKarte[] karten = {new EreignisgemeinschaftsKarte("Schulgeld"),
+                                                  new EreignisgemeinschaftsKarte("Geburtstag"),
+                                                  new EreignisgemeinschaftsKarte("Krankenhaus"),
+                                                  new EreignisgemeinschaftsKarte("Strafzettel"),
+                                                  new EreignisgemeinschaftsKarte("Urlaubsgeld"),
+                                                  new EreignisgemeinschaftsKarte("Versicherung"),
+                                                  new EreignisgemeinschaftsKarte("Schönheitswettbewerb"),
+                                                  new EreignisgemeinschaftsKarte("Wette"),
+                                                  new EreignisgemeinschaftsKarte("Los"),
+                                                  new EreignisgemeinschaftsKarte("Gefängnis"),
+                                                  new EreignisgemeinschaftsKarte("Südbahnhof"),
+                                                  new EreignisgemeinschaftsKarte("Opernplatz"),
+                                                  new EreignisgemeinschaftsKarte("Schlossallee"),
+                                                  new EreignisgemeinschaftsKarte("Seestraße"),
+                                                  new EreignisgemeinschaftsKarte("3zurück"),
+                                                  new EreignisgemeinschaftsKarte("3vor")};
 
     /**
      * @param feldnummer 

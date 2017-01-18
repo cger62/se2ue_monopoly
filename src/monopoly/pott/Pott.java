@@ -1,63 +1,48 @@
 package monopoly.pott;
 
-
-import java.util.*;
 import monopoly.bank.Bank;
 
 /**
+ * Wenn ein Spieler Steuern zahlen muss, werden diese in den Pott eingezahlt.
+ * Landet ein Spieler auf dem FreiParkenFeld erhaelt er den gesamten Inhalt
+ * des Potts.
  * 
+ * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public class Pott {
 
-    /**
-     * Default constructor
-     */
-    public Pott() {
-    }
-
-    /**
-     * 
-     */
     private static int kontostand;
 
-
-    /**
-     * 
-     */
-    public void Pott() {
-        kontostand=0;
+    public Pott() {
+        kontostand = 0;
     }
-
+    
     /**
-     * @param wert
+     * Zahlt den Pott an den Spieler aus, der sich auf dem FreiParkenFeld 
+     * befindet.
+     * 
+     * @param betrag der Betrag, der an den Spieler ausgezahlt werden muss
+     * @return betrag der Betrag, der ausgezahlt wurde
      */
    public  static int auszahlen(int betrag) {
-        // TODO implement here
-        kontostand =- betrag;
-        System.out.println("Im Pott befinden sich: "+kontostand);
-        if(kontostand<0){
-        kontostand = Bank.auszahlen(kontostand*(-1));
-        System.out.println("Im Pott befinden sich: "+kontostand);
-        return betrag;
         
-        }
-        else{
-        return betrag;}
+        return betrag;
     }
 
     /**
-     * @param einzahlung
+     * Realisiert das Einzahlen der Steuern in den Pott.
+     * 
+     * @param einzahlung die Steuern, die ein Spieler in den Pott einzahlen muss
      */
     public static void  einzahlen(int einzahlung) {
         kontostand =+ einzahlung;
         System.out.println("Im Pott befinden sich: "+kontostand);
     }
     /**
-     * @return
+     * @return den aktuellen Kontostand des Potts
      */
     public static int getKontostand() {
-        // TODO implement here
-        return 0;
+        return kontostand;
     }
 
 }

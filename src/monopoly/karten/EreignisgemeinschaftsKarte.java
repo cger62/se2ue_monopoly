@@ -2,33 +2,38 @@ package monopoly.karten;
 
 
 import monopoly.pott.Pott;
-import monopoly.spielfelder.Spielfelder;
-import java.util.*;
 import monopoly.map.MonopolyMap;
 import monopoly.spieler.Spieler;
 
 /**
  *
+ * Diese Klasse realisiert die verschiedenen Ereigniskarten, die im Spiel 
+ * verwendet werden.
+ * 
+ * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public class EreignisgemeinschaftsKarte  {
 
-    public int wert;
     public String text;
-    public Boolean isEinzahlung;
     private MonopolyMap map;
     
 
     /**
-     * @param wert
-     * @param text
-     * @param isEinzahlung
+     * Erzeugt eine neue Ereigniskarte anhand des uebergebenen Namens.
+     * 
+     * @param text der Name der Ereigniskarte
      */
-    public EreignisgemeinschaftsKarte(int wert, String text, boolean isEinzahlung) {
-        this.wert = wert;
+    public EreignisgemeinschaftsKarte(String text) {
         this.text = text;
-        this.isEinzahlung = isEinzahlung;
     }
 
+    /**
+     * Unterscheidet die verschiedenen Ereigniskarten anhand des Namens,
+     * setzt die Spielfigur entsprechend der gewurfelten Zahl und
+     * erzeugt eine Konsolenausgabe welche Aktion die Ereigniskarte erfordert.
+     * 
+     * @param spieler der Spieler, der gerade an der Reihe ist
+     */
     public void ereignis(Spieler spieler) {
         switch(text){
             case "Gefängnis" : System.out.println("Gehe ins Gefaengnis."); spieler.istGefängnis = true; break;
