@@ -102,7 +102,7 @@ public class MonopolyMap {
             spielfelder.add(hauptbahnhof);
 
             //Wasserwerk-Feld
-            Wasserwerk wasserwerk = new Wasserwerk(28, "Wasserwerk", 3000, 1500, 0, "werk");
+            Wasserwerk wasserwerk = new Wasserwerk(28, "Wasserwerk", 3000, 0, "werk");
             spielfelder.add(wasserwerk);
 
             //Elektrizitätswerk-Feld
@@ -155,70 +155,70 @@ public class MonopolyMap {
             spielfelder.add((Spielfelder) egF6);
 
             //Straßen-Felder
-            Straße badstr = new Straße(1, "Badstraße", 1200, 600, 40, "braun", 1000, 1000);
+            Straße badstr = new Straße(1, "Badstraße", 1200, 40, "braun", 1000, 1000);
             spielfelder.add(badstr);
 
-            Straße turmstr = new Straße(3, "Turmstraße", 1200, 600, 80, "braun", 1000, 1000);
+            Straße turmstr = new Straße(3, "Turmstraße", 1200, 80, "braun", 1000, 1000);
             spielfelder.add(turmstr);
 
-            Straße chausseestr = new Straße(6, "Chausseestraße", 2000, 1000, 120, "hellblau", 1000, 1000);
+            Straße chausseestr = new Straße(6, "Chausseestraße", 2000, 120, "hellblau", 1000, 1000);
             spielfelder.add(chausseestr);
 
-            Straße elisenstr = new Straße(8, "Elisenstraße", 2000, 1000, 120, "hellblau", 1000, 1000);
+            Straße elisenstr = new Straße(8, "Elisenstraße", 2000, 120, "hellblau", 1000, 1000);
             spielfelder.add(elisenstr);
 
-            Straße poststr = new Straße(9, "Poststraße", 2400, 1200, 160, "hellblau", 1000, 1000);
+            Straße poststr = new Straße(9, "Poststraße", 2400, 160, "hellblau", 1000, 1000);
             spielfelder.add(poststr);
 
-            Straße seestr = new Straße(11, "Seestraße", 2800, 1400, 200, "pink", 2000, 2000);
+            Straße seestr = new Straße(11, "Seestraße", 2800, 200, "pink", 2000, 2000);
             spielfelder.add(seestr);
 
-            Straße hafenstr = new Straße(13, "Hafenstraße", 2800, 1400, 200, "pink", 2000, 2000);
+            Straße hafenstr = new Straße(13, "Hafenstraße", 2800, 200, "pink", 2000, 2000);
             spielfelder.add(hafenstr);
 
-            Straße neuestr = new Straße(14, "Neue Straße", 3200, 1600, 240, "pink", 2000, 2000);
+            Straße neuestr = new Straße(14, "Neue Straße", 3200, 240, "pink", 2000, 2000);
             spielfelder.add(neuestr);
 
-            Straße muenchnerstr = new Straße(16, "Münchner Straße", 3600, 1800, 280, "orange", 2000, 2000);
+            Straße muenchnerstr = new Straße(16, "Münchner Straße", 3600, 280, "orange", 2000, 2000);
             spielfelder.add(muenchnerstr);
 
-            Straße wienerstr = new Straße(18, "Wiener Straße", 3600, 1800, 280, "orange", 2000, 2000);
+            Straße wienerstr = new Straße(18, "Wiener Straße", 3600, 280, "orange", 2000, 2000);
             spielfelder.add(wienerstr);
 
-            Straße berlinerstr = new Straße(19, "Berliner Straße", 4000, 2000, 320, "orange", 2000, 2000);
+            Straße berlinerstr = new Straße(19, "Berliner Straße", 4000, 320, "orange", 2000, 2000);
             spielfelder.add(berlinerstr);
 
-            Straße theaterstr = new Straße(21, "Theaterstraße", 4400, 2200, 360, "rot", 3000, 3000);
+            Straße theaterstr = new Straße(21, "Theaterstraße", 4400, 360, "rot", 3000, 3000);
             spielfelder.add(theaterstr);
 
-            Straße museumsstr = new Straße(23, "Museumsstraße", 4400, 2200, 360, "rot", 3000, 3000);
+            Straße museumsstr = new Straße(23, "Museumsstraße", 4400, 360, "rot", 3000, 3000);
             spielfelder.add(museumsstr);
 
-            Straße opernplatz = new Straße(24, "Opernplatz", 4800, 2400, 400, "rot", 3000, 3000);
+            Straße opernplatz = new Straße(24, "Opernplatz", 4800, 400, "rot", 3000, 3000);
             spielfelder.add(opernplatz);
 
-            Straße lessingstr = new Straße(26, "Lessingstraße", 5200, 2600, 440, "gelb", 3000, 3000);
+            Straße lessingstr = new Straße(26, "Lessingstraße", 5200, 440, "gelb", 3000, 3000);
             spielfelder.add(lessingstr);
 
-            Straße schillerstr = new Straße(27, "Schillerstraße", 5200, 2600, 440, "gelb", 3000, 3000);
+            Straße schillerstr = new Straße(27, "Schillerstraße", 5200, 440, "gelb", 3000, 3000);
             spielfelder.add(schillerstr);
 
-            Straße goethestr = new Straße(29, "Goethestraße", 5600, 2800, 480, "gelb", 3000, 3000);
+            Straße goethestr = new Straße(29, "Goethestraße", 5600, 480, "gelb", 3000, 3000);
             spielfelder.add(goethestr);
 
-            Straße rathausplatz = new Straße(31, "Rathausplatz",6000, 3000, 520, "grün", 4000, 4000);
+            Straße rathausplatz = new Straße(31, "Rathausplatz",6000, 520, "grün", 4000, 4000);
             spielfelder.add(rathausplatz);
 
-            Straße hauptstr = new Straße(32, "Hauptstraße", 6000, 3000, 520, "grün", 4000, 4000);
+            Straße hauptstr = new Straße(32, "Hauptstraße", 6000, 520, "grün", 4000, 4000);
             spielfelder.add(hauptstr);
 
-            Straße bahnhofsstr = new Straße(34, "Bahnhofstraße", 6400, 3200, 560, "grün", 4000, 4000);
+            Straße bahnhofsstr = new Straße(34, "Bahnhofstraße", 6400, 560, "grün", 4000, 4000);
             spielfelder.add(bahnhofsstr);
 
-            Straße parkstr = new Straße(37, "Parkstraße", 7000, 3500,700 , "dunkelblau", 4000, 4000);
+            Straße parkstr = new Straße(37, "Parkstraße", 7000, 700 , "dunkelblau", 4000, 4000);
             spielfelder.add(parkstr);
 
-            Straße schlossallee = new Straße(39, "Schlossallee", 8000, 4000, 1000, "dunkelblau", 4000, 4000);
+            Straße schlossallee = new Straße(39, "Schlossallee", 8000, 1000, "dunkelblau", 4000, 4000);
             spielfelder.add(schlossallee);
 
           

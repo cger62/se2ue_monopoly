@@ -20,21 +20,23 @@ public class Straße extends BesitzrechtFeld implements Spielfelder{
     /**
      * Im Konstruktor wird eine Straße erzeugt mit folgenden Parametern:
      *
-     * @param feldnummer
-     * @param feldname
-     * @param grundstueckswert
-     * @param hypothek
-     * @param miete
-     * @param farbe
-     * @param kostenHaus
-     * @param kostenHotel
+     * @param feldnummer die Nummer des Feldes
+     * @param feldname der Name des Feldes
+     * @param grundstueckswert Der Wert des Grundstuecks
+     * @param miete die Höhe der Miete
+     * @param farbe die Farbe der Straße
+     * @param kostenHaus die Kosten eines Hauses
+     * @param kostenHotel die Kosten eines Hotels
      */
-    public Straße(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete, String farbe, int kostenHaus, int kostenHotel) {
+    public Straße(int feldnummer, String feldname, int grundstueckswert, int miete, String farbe, int kostenHaus, int kostenHotel) {
         super(feldnummer, feldname, grundstueckswert, miete, farbe);
         this.kostenHaus = kostenHaus;
         this.kostenHotel = kostenHotel;
     }
 
+    /**
+     * @return die Anzahl der Haeuser
+     */
     public int getAnzahlHaeuser() {
         return anzahlHaeuser;
     }
@@ -43,6 +45,9 @@ public class Straße extends BesitzrechtFeld implements Spielfelder{
         this.anzahlHaeuser = anzahlHaeuser;
     }
 
+    /**
+     * @return die Anzahl der Hotels
+     */
     public int getAnzahlHotels() {
         return anzahlHotels;
     }
@@ -51,14 +56,23 @@ public class Straße extends BesitzrechtFeld implements Spielfelder{
         this.anzahlHotels = anzahlHotels;
     }
 
+    /**
+     * @return die Kosten eines Hauses
+     */
     public int getKostenHaus() {
         return kostenHaus;
     }
 
+    /**
+     * @return die Kosten eines Hotels 
+     */
     public int getKostenHotel() {
         return kostenHotel;
     }
 
+    /**
+     * @return die Nummer des Feldes 
+     */
     @Override
     public int getFeldnummer() {
          return feldnummer;
