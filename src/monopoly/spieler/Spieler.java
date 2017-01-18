@@ -39,7 +39,7 @@ public class Spieler {
 
     public int wuerfelZahl;
 
-    public int aktuellesFeld;
+    public int aktuellesFeld =0;
     public Spielfelder aktuellesFeldName;
     public HashMap<String, ArrayList> liste = new HashMap<>();
 
@@ -92,13 +92,13 @@ public class Spieler {
     public void wuerfeln() {
 
         if (istGefängnis) {
-            System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
-            int zahl = (int) (Math.random() * 12) + 1;
+            //System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
+            int zahl = getRandomInteger(12,1);
             System.out.println("Du bist im Gefängnis, würfel eine " + zahl + " um raus zu kommen, du kannst dann in der nächsten Runde weiterspielen");
             int wuerfel;
             boolean gefunden = false;
             for (int i = 0; i < 3; i++) {
-                wuerfel = (int) (Math.random() * 12) + 1;
+                wuerfel = getRandomInteger(12,1);
                 System.out.println("Du hast " + wuerfel + " gefwuerfelt");
                 if (wuerfel == zahl) {
                     System.out.println("Richtige Zahl ( " + wuerfel + " )du, kannst nächste runde weiterspielen");
@@ -120,9 +120,9 @@ public class Spieler {
         //System.out.println(this.aktuellesFeld);
         String[] worte = {"Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun", "Zehn", "Elf", "Zwölf"};
 
-        wuerfelZahl = (int) (Math.random() * 11);
+        wuerfelZahl = getRandomInteger(12,1);
 
-        this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl + 1;
+        this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl+1 ;
         //System.out.println(this.aktuellesFeld);
         if (this.aktuellesFeld > 39) {
             auszahlen(4000);
@@ -136,7 +136,7 @@ public class Spieler {
         }
 
         System.out.println(worte[wuerfelZahl] + " gewürfelt");
-        aktuellesFeldName = spielfigurSetzen(this.aktuellesFeld - 1);
+        aktuellesFeldName = spielfigurSetzen(this.aktuellesFeld);
         System.out.println("Du befindest dich auf Feld-Nr: " + (this.aktuellesFeld));
         System.out.println("Feld-Name: " + aktuellesFeldName.getFeldname());
         boolean check = false;
@@ -155,7 +155,7 @@ public class Spieler {
             if (aktuellesFeldName instanceof FreiParkenFeld) {
                 System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
                 System.out.println("Glückwunsch, du bist auf Frei Parken und erhälst den gesamten Pott in Höhe von: " + Pott.getKontostand());
-                Pott.auszahlen(Pott.getKontostand());
+                kontostand = kontostand +Pott.auszahlen(Pott.getKontostand());
                 System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
 
             }
@@ -179,12 +179,14 @@ public class Spieler {
                     System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
                     System.out.println("Du musst 4000 Euro  Einkommenssteuer Zahlen");
                     Pott.einzahlen(s.getSteuern());
+                     kontostand = kontostand-s.getSteuern();
                     System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
                 }
                 if (s.getFeldnummer() == 38) {
                     System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
                     System.out.println("Du musst 2000 Euro Zusatzsteuer Zahlen");
                     Pott.einzahlen(s.getSteuern());
+                    kontostand = kontostand-s.getSteuern();
                     System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
                 }
             }
@@ -214,7 +216,7 @@ public class Spieler {
                 }
             }
         }
-
+        else{System.out.println("Das Feld: "+aktuellesFeldName.getFeldname() +"(Nr: "+aktuellesFeldName.getFeldnummer()+ ")gehört dir!");}
     }
 
     /**
@@ -256,85 +258,91 @@ public class Spieler {
                         case "braun":
                             braun.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
-                            System.out.println("Du hast " + braun.size() + "von 2 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
+                            System.out.println("Du hast " + braun.size() + " von 2 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (braun.size() == 2) {
                                 hausBauen(feld);
                                 mieteÄndernStraße(braun);
                                 break;
                             }
+                            break;
                         case "hellblau":
                             hellblau.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
-                            System.out.println("Du hast " + hellblau.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
+                            System.out.println("Du hast " + hellblau.size() + " von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (hellblau.size() == 3) {
                                 hausBauen(feld);
-                                mieteÄndernStraße(braun);
+                                mieteÄndernStraße(hellblau);
                                 break;
-                            }
+                            }break;
                         case "pink":
                             pink.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
-                            System.out.println("Du hast " + pink.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
+                            System.out.println("Du hast " + pink.size() + " von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (pink.size() == 3) {
                                 hausBauen(feld);
-                                mieteÄndernStraße(braun);
+                                mieteÄndernStraße(pink);
                                 break;
-                            }
+                            }break;
                         case "orange":
                             orange.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
-                            System.out.println("Du hast " + orange.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
+                            System.out.println("Du hast " + orange.size() + " von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (orange.size() == 3) {
                                 hausBauen(feld);
-                                mieteÄndernStraße(braun);
+                                mieteÄndernStraße(orange);
+                                break;
                             }
                             break;
                         case "rot":
                             rot.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
-                            System.out.println("Du hast " + rot.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
+                            System.out.println("Du hast " + rot.size() + " von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (rot.size() == 3) {
                                 hausBauen(feld);
-                                mieteÄndernStraße(braun);
+                                mieteÄndernStraße(rot);
+                                break;
                             }
                             break;
                         case "gelb":
                             gelb.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
-                            System.out.println("Du hast " + gelb.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
+                            System.out.println("Du hast " + gelb.size() + " von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (gelb.size() == 3) {
                                 hausBauen(feld);
-                                mieteÄndernStraße(braun);
+                                mieteÄndernStraße(gelb);
+                                break;
                             }
                             break;
                         case "grün":
                             grün.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
-                            System.out.println("Du hast " + grün.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
+                            System.out.println("Du hast " + grün.size() + " von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (grün.size() == 3) {
                                 hausBauen(feld);
-                                mieteÄndernStraße(braun);
+                                mieteÄndernStraße(grün);
+                                break;
                             }
                             break;
                         case "dunkelblau":
                             dunkelblau.add((Straße) feld);
                             System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
-                            System.out.println("Du hast " + dunkelblau.size() + "von 2 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
-                            if (dunkelblau.size() == 2);
+                            System.out.println("Du hast " + dunkelblau.size() + " von 2 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
+                            if (dunkelblau.size() == 2){
                             hausBauen(feld);
-                            mieteÄndernStraße(braun);
+                            mieteÄndernStraße(dunkelblau);
+                            break;}
                             break;
                         case "bahnhof":
                             bahnhoefe.add((Bahnhof) feld);
                             System.out.println("Du hast den Bahnhof: " + feld.getFeldname() + " gekauft!");
-                            System.out.println("Du hast " + bahnhoefe.size() + "von 4 Bahnhöfen in deinem Besitz");
+                            System.out.println("Du hast " + bahnhoefe.size() + " von 4 Bahnhöfen in deinem Besitz");
                             mieteÄndernBahnhof();
                             
                             break;
                         case "werk":
                             werke.add(feld);
                             System.out.println("Du hast das Werk: " + feld.getFeldname() + " gekauft!");
-                            System.out.println("Du hast " + werke.size() + "von 2 Werken in deinem Besitz");
+                            System.out.println("Du hast " + werke.size() + " von 2 Werken in deinem Besitz");
                             break;
                         default:
                             System.out.println("Feld konnte keiner Farbe/Kategorie zugeordnet werden");
@@ -357,7 +365,7 @@ public class Spieler {
         Spieler spieler = feld.getSpieler();
         boolean einzahlen = einzahlen(feld.getMiete());
         if (!einzahlen) {
-            System.out.println("Du bist pleite und aus dem Spiel");
+            //System.out.println("Du bist pleite und aus dem Spiel");
             MonopolyMap.spielerVerloren(spielfigur);
         } else {
             System.out.println("Du musst an " + feld.getSpieler().getSpielfigur() + " Miete in Höhe von " + feld.getMiete() + " zahlen (" + feld.getFeldname() + ")");
@@ -380,6 +388,7 @@ public class Spieler {
 
                     if (feld instanceof Straße) {
                         System.out.println("Wieviele Häuser möchtest du auf der Straße:" + feld.feldname + " bauen?");
+                        System.out.println("Ein Haus kostet: " + ((Straße) feld).getKostenHaus());
                         int anzahl = Integer.parseInt(br.readLine());
 
                         Straße str = (Straße) feld;
@@ -439,6 +448,7 @@ public class Spieler {
     private void hotelBauen(Straße str) {
         try {
             System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaeuser() / 4 + "Hotels bauen, wieviele möchtest du Bauen?");
+             System.out.println("Ein Hotel kostet: " + str.getKostenHotel());
             int anzahl = Integer.parseInt(br.readLine());
             if (anzahl <= (int) str.getAnzahlHaeuser() / 4) {
                 str.setAnzahlHotels(anzahl);
@@ -482,7 +492,7 @@ public class Spieler {
     }
 
     public String meinStatus() {
-        try {
+        try { System.out.println("--------------------STATUS--------------------");
             System.out.println("Spielfigur: " + spielfigur);
             System.out.println("Kontostand: " + kontostand);
             System.out.println("Aktuell befindest du dich auf: " + this.aktuellesFeldName.getFeldname());
@@ -500,6 +510,7 @@ public class Spieler {
                     System.out.println("Hotels: " + bf.getAnzahlHotels());
 
                 }
+                System.out.println("--------------------STATUS ENDE--------------------");
             }
             System.out.println("Gebe JA ein um letzte Aktion durchzuführen");
             return br.readLine();
@@ -516,19 +527,26 @@ public class Spieler {
 
         for (Straße s : strassen) {
             s.setMiete(s.getMiete() * 2);
-            System.out.println("Miete der Straße: " + s.getFeldname() + " beträgt: " + s.getMiete());
+            
             if (s.getAnzahlHaeuser() > 0) {
                 s.setMiete(s.getMiete() * (s.getAnzahlHaeuser() * 5));
-                System.out.println("Miete der Straße: " + s.getFeldname() + " beträgt: " + s.getMiete());
+                
             }
             if (s.getAnzahlHotels() > 0) {
                 s.setMiete(s.getMiete() * (s.getAnzahlHotels() * 10));
                 
-                    System.out.println("Miete der Straße: " + s.getFeldname() + " beträgt: " + s.getMiete());
+                    
                 
-            }
+            }System.out.println("Miete der Straße: " + s.getFeldname() + " beträgt: " + s.getMiete());
         }
 
     }
+     public static int getRandomInteger(int maximum, int minimum){
+        return ((int) (Math.random()*(maximum - minimum))) + minimum;
+    }
+
+
+
+
 
 }

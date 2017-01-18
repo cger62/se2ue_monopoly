@@ -220,7 +220,7 @@ public class MonopolyMap {
 
             Straße schlossallee = new Straße(39, "Schlossallee", 8000, 1000, "dunkelblau", 4000, 4000);
             spielfelder.add(schlossallee);
-
+            System.out.println("//////////////// Spielbrett erfolgreich initialisiert ////////////////");
           
 
         } catch (IOException ex) {
@@ -234,8 +234,8 @@ public class MonopolyMap {
         for (Spieler s : spieler) {
             if (s.getSpielfigur().equals(name)) {
 
-                Bank.einzahlen(s.getKontostand());
-
+               // Bank.einzahlen(s.getKontostand());
+                System.out.println(s.getSpielfigur() + " ist Pleite und wird aus der Liste der Speielr entfernt");
                 spieler.remove(s);
                 anzahlSpieler = anzahlSpieler - 1;
             }
@@ -245,22 +245,22 @@ public class MonopolyMap {
 
     public void spielen() {
     
-
+        System.out.println("//////////////// Spiel beginnt mit :"+spieler.size() +" Spielern ////////////////");
         while (spieler.size() >= 1) {
             
                 
         if (spieler.size() == 1) {
-            System.out.println("Spiel beendet, Spieler :" + spieler.get(0) + " hat gewonnen");
+            System.out.println("//////////////// Spiel beendet, Spieler :" + spieler.get(0) + " hat gewonnen ////////////////");
             break;
 
         }
             //int i = 0;
             for (Spieler s : spieler) {
                 
-                System.out.println("------------------------------");
+                System.out.println("------------------------------------------------------------");
                 System.out.println("Spieler: " + s.getSpielfigur() + " ist an der Reihe");
                 s.wuerfeln();
-                System.out.println("------------------------------");
+                System.out.println("------------------------------------------------------------");
                 
                 //i = +1;
                 
