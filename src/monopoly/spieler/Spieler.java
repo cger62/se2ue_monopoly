@@ -179,7 +179,7 @@ public class Spieler {
             if (aktuellesFeldName instanceof BesitzrechtFeld) {
                 BesitzrechtFeld bf = (BesitzrechtFeld) aktuellesFeldName;
 
-                if (bf.isGekauft) {
+                if (bf.istGekauft) {
                     if (bf instanceof Straße || bf instanceof Bahnhof) {
                         mieteZahlen(bf);
                     }
@@ -239,67 +239,67 @@ public class Spieler {
            if ( eingabe.trim().toLowerCase().equals("ja")) {
                 if (einzahlen(feld.grundstueckswert)) {
                     felderInBesitz.add(feld);
-                    switch (feld.getColor()) {
+                    switch (feld.getFarbe()) {
                         case "braun":
                             braun.add(feld);
-                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getColor() + ") gekauft!");
-                            System.out.println("Du hast " + braun.size() + "von 2 Feldern (" + feld.getColor() + ") in deinem Besitz");
+                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
+                            System.out.println("Du hast " + braun.size() + "von 2 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (braun.size() == 2) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "hellblau":
                             hellblau.add(feld);
-                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getColor() + ") gekauft!");
-                            System.out.println("Du hast " + hellblau.size() + "von 3 Feldern (" + feld.getColor() + ") in deinem Besitz");
+                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
+                            System.out.println("Du hast " + hellblau.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (hellblau.size() == 3) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "pink":
                             pink.add(feld);
-                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getColor() + ") gekauft!");
-                            System.out.println("Du hast " + pink.size() + "von 3 Feldern (" + feld.getColor() + ") in deinem Besitz");
+                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
+                            System.out.println("Du hast " + pink.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (pink.size() == 3) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "orange":
                             orange.add(feld);
-                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getColor() + ") gekauft!");
-                            System.out.println("Du hast " + orange.size() + "von 3 Feldern (" + feld.getColor() + ") in deinem Besitz");
+                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
+                            System.out.println("Du hast " + orange.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (orange.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "rot":
                             rot.add(feld);
-                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getColor() + ") gekauft!");
-                            System.out.println("Du hast " + rot.size() + "von 3 Feldern (" + feld.getColor() + ") in deinem Besitz");
+                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
+                            System.out.println("Du hast " + rot.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (rot.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "gelb":
                             gelb.add(feld);
-                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getColor() + ") gekauft!");
-                            System.out.println("Du hast " + gelb.size() + "von 3 Feldern (" + feld.getColor() + ") in deinem Besitz");
+                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
+                            System.out.println("Du hast " + gelb.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (gelb.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "grün":
                             grün.add(feld);
-                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getColor() + ") gekauft!");
-                            System.out.println("Du hast " + grün.size() + "von 3 Feldern (" + feld.getColor() + ") in deinem Besitz");
+                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
+                            System.out.println("Du hast " + grün.size() + "von 3 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (grün.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "dunkelblau":
                             dunkelblau.add(feld);
-                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getColor() + ") gekauft!");
-                            System.out.println("Du hast " + dunkelblau.size() + "von 2 Feldern (" + feld.getColor() + ") in deinem Besitz");
+                            System.out.println("Du hast die Straße: " + feld.getFeldname() + "(" + feld.getFarbe() + ") gekauft!");
+                            System.out.println("Du hast " + dunkelblau.size() + "von 2 Feldern (" + feld.getFarbe() + ") in deinem Besitz");
                             if (dunkelblau.size() == 2);
                             hausBauen(feld);
                             break;
@@ -344,7 +344,7 @@ public class Spieler {
     }
 
     public void hausBauen(BesitzrechtFeld feld) throws IOException {
-        String color = feld.getColor();
+        String color = feld.getFarbe();
         Iterator it = liste.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
@@ -468,7 +468,7 @@ public class Spieler {
                 
                 if (s instanceof Straße) {
                     Straße bf = (Straße) s;
-                    System.out.println("Farbe: " + bf.getColor());
+                    System.out.println("Farbe: " + bf.getFarbe());
                     System.out.println("Häuser: " + bf.getAnzahlHaueser());
                     System.out.println("Hotels: " + bf.getAnzahlHotels());
                     
