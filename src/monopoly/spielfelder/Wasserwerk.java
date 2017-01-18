@@ -4,15 +4,24 @@ package monopoly.spielfelder;
 import java.util.*;
 
 /**
- * 
+ * Diese Klasse stellt ein Wasserwerk dar, das für die Realisierung des Spiels benötigt wird. 
+ *
+ * @author Liane Lin, Annika Schoettle, Carsten Gericke, Sali Hassan
  */
 public class Wasserwerk extends BesitzrechtFeld implements Spielfelder{
 
     /**
-     * Default constructor
+     * Der Konstruktor erzeugt ein Wasserwerk mit folgenenden Parametern:
+     * 
+     * @param feldnummer
+     * @param feldname
+     * @param grundstueckswert
+     * @param hypothek
+     * @param miete
+     * @param farbe
      */
-    public Wasserwerk(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete, String color) {
-        super(feldnummer,feldname,grundstueckswert,hypothek,miete,color );}
+    public Wasserwerk(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete, String farbe) {
+        super(feldnummer,feldname,grundstueckswert,miete,farbe );}
 
     @Override
     public int getFeldnummer() {

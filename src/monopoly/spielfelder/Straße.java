@@ -3,11 +3,13 @@ package monopoly.spielfelder;
 import java.util.*;
 
 /**
+ * Diese Klasse stellt eine Straße dar, die von einem Spieler gekauft werden kann.
  *
+ * @author Liane Lin, Annika Schoettle, Carsten Gericke, Sali Hassan
  */
 public class Straße extends BesitzrechtFeld implements Spielfelder{
 
-    private int anzahlHaueser = 0;
+    private int anzahlHaeuser = 0;
 
     private int anzahlHotels = 0;
 
@@ -16,26 +18,29 @@ public class Straße extends BesitzrechtFeld implements Spielfelder{
      private int kostenHotel;
 
     /**
-     * Default constructor
+     * Im Konstruktor wird eine Straße erzeugt mit folgenden Parametern:
      *
      * @param feldnummer
      * @param feldname
      * @param grundstueckswert
      * @param hypothek
      * @param miete
+     * @param farbe
+     * @param kostenHaus
+     * @param kostenHotel
      */
-    public Straße(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete, String color, int kostenHaus, int kostenHotel) {
-        super(feldnummer, feldname, grundstueckswert, hypothek, miete, color);
+    public Straße(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete, String farbe, int kostenHaus, int kostenHotel) {
+        super(feldnummer, feldname, grundstueckswert, miete, farbe);
         this.kostenHaus = kostenHaus;
         this.kostenHotel = kostenHotel;
     }
 
-    public int getAnzahlHaueser() {
-        return anzahlHaueser;
+    public int getAnzahlHaeuser() {
+        return anzahlHaeuser;
     }
 
-    public void setAnzahlHaueser(int anzahlHaueser) {
-        this.anzahlHaueser = anzahlHaueser;
+    public void setAnzahlHaeuser(int anzahlHaeuser) {
+        this.anzahlHaeuser = anzahlHaeuser;
     }
 
     public int getAnzahlHotels() {
@@ -49,7 +54,6 @@ public class Straße extends BesitzrechtFeld implements Spielfelder{
     public int getKostenHaus() {
         return kostenHaus;
     }
-
 
     public int getKostenHotel() {
         return kostenHotel;

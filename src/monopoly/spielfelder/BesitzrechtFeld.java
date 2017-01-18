@@ -38,7 +38,7 @@ public class BesitzrechtFeld  implements Spielfelder{
         this.miete = miete;
     }
   
-   public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete, String color) {
+   public BesitzrechtFeld(int feldnummer, String feldname, int grundstueckswert, int miete, String color) {
       this.feldnummer = feldnummer;
         this.feldname = feldname;
         this.grundstueckswert = grundstueckswert;

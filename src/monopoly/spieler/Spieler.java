@@ -362,19 +362,19 @@ public class Spieler {
 
                         Straße str = (Straße) feld;
                         if (einzahlen(str.getKostenHaus() * anzahl)) {
-                            str.setAnzahlHaueser(str.getAnzahlHaueser() + anzahl);
-                            if (str.getAnzahlHaueser() + anzahl > 4) {
-                                System.out.println("Möchtest du " + ((str.getAnzahlHaueser()) - (str.getAnzahlHaueser() % 4)) + " deiner " + str.getAnzahlHaueser() + "Häuser in Hotels umwandeln?");
+                            str.setAnzahlHaeuser(str.getAnzahlHaeuser() + anzahl);
+                            if (str.getAnzahlHaeuser() + anzahl > 4) {
+                                System.out.println("Möchtest du " + ((str.getAnzahlHaeuser()) - (str.getAnzahlHaeuser() % 4)) + " deiner " + str.getAnzahlHaeuser() + "Häuser in Hotels umwandeln?");
                                String eingabe = br.readLine();
                                 if (eingabe.trim().toLowerCase().equals("status")) {
                                     eingabe= meinStatus();
                                 }
                                if (eingabe.trim().toLowerCase().equals("ja")) {
-                                    str.setAnzahlHaueser(str.getAnzahlHaueser() + anzahl);
+                                    str.setAnzahlHaeuser(str.getAnzahlHaeuser() + anzahl);
                                     hotelBauen(str);
                                 } else {
 
-                                    System.out.println("Du hast für die Straße: " + str.getFeldname() + "," + anzahl + " Häuser gebaut, insgesamt hast du jetzt " + str.getAnzahlHaueser() + " Häuser");
+                                    System.out.println("Du hast für die Straße: " + str.getFeldname() + "," + anzahl + " Häuser gebaut, insgesamt hast du jetzt " + str.getAnzahlHaeuser() + " Häuser");
                                     System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
                                 }
                             }
@@ -416,13 +416,13 @@ public class Spieler {
 
     private void hotelBauen(Straße str) {
         try {
-            System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaueser() / 4 + "Hotels bauen, wieviele möchtest du Bauen?");
+            System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaeuser() / 4 + "Hotels bauen, wieviele möchtest du Bauen?");
             int anzahl = Integer.parseInt(br.readLine());
-            if (anzahl <= (int) str.getAnzahlHaueser() / 4) {
+            if (anzahl <= (int) str.getAnzahlHaeuser() / 4) {
                 str.setAnzahlHotels(anzahl);
 
-                einzahlen((str.getKostenHotel() * anzahl) + str.getAnzahlHaueser() * anzahl);
-                str.setAnzahlHaueser(-(anzahl * 4));
+                einzahlen((str.getKostenHotel() * anzahl) + str.getAnzahlHaeuser() * anzahl);
+                str.setAnzahlHaeuser(-(anzahl * 4));
             }
         } catch (IOException ex) {
             Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
@@ -472,7 +472,7 @@ public class Spieler {
                 if (s instanceof Straße) {
                     Straße bf = (Straße) s;
                     System.out.println("Farbe: " + bf.getFarbe());
-                    System.out.println("Häuser: " + bf.getAnzahlHaueser());
+                    System.out.println("Häuser: " + bf.getAnzahlHaeuser());
                     System.out.println("Hotels: " + bf.getAnzahlHotels());
                     
                 }

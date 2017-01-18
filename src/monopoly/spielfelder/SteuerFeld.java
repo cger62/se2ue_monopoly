@@ -1,30 +1,33 @@
 package monopoly.spielfelder;
 
-
 import java.util.*;
 
 /**
- * 
+ * Diese Klasse stellt ein Steuerfeld dar. Wenn man auf eins dieser Felder gelangt, 
+ * legt man eine bestimmte Summe in den Pott. 
+ *
+ * @author Liane Lin, Annika Schoettle, Carsten Gericke, Sali Hassan
  */
-public class SteuerFeld  implements Spielfelder{
+public class SteuerFeld implements Spielfelder {
 
-    int feldnummer;
-    String feldname;
+    private int feldnummer;
+    
+    private String feldname;
 
     private int steuern;
-
-    //Default Constructor
-
     
-    
-
+    /**
+     * Im Konstruktor wird ein Steuerfeld erzeugt mit folgenden Parametern:
+     *
+     * @param feldnummer
+     * @param feldname
+     * @param steuern
+     */
     public SteuerFeld(int feldnummer, String feldname, int steuern) {
-    this.feldnummer = feldnummer;
-    this.feldname=feldname;
+        this.feldnummer = feldnummer;
+        this.feldname = feldname;
         this.steuern = steuern;
     }
-    
-  
 
     public int getSteuern() {
         return steuern;
@@ -32,11 +35,11 @@ public class SteuerFeld  implements Spielfelder{
 
     @Override
     public int getFeldnummer() {
-         return feldnummer;
+        return feldnummer;
     }
 
     @Override
     public String getFeldname() {
-       return feldname; //To change body of generated methods, choose Tools | Templates.
+        return feldname; //To change body of generated methods, choose Tools | Templates.
     }
 }
