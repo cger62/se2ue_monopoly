@@ -1,7 +1,5 @@
 package monopoly.spielfelder;
 
-import java.util.*;
-
 /**
  * Diese Klasse stellt ein Steuerfeld dar. Wenn man auf eins dieser Felder gelangt, 
  * legt man eine bestimmte Summe in den Pott. 
@@ -29,26 +27,17 @@ public class SteuerFeld implements Spielfelder {
         this.steuern = steuern;
     }
 
-    /**
-     * @return die Summe der Steuern
-     */
     public int getSteuern() {
         return steuern;
     }
 
-    /**
-     * @return die Nummer des Feldes 
-     */
     @Override
     public int getFeldnummer() {
         return feldnummer;
     }
 
-    /**
-     * @return den Namen des Feldes
-     */
     @Override
     public String getFeldname() {
-        return feldname; //To change body of generated methods, choose Tools | Templates.
+        return feldname; 
     }
 }

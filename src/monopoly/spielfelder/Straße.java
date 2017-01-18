@@ -1,7 +1,5 @@
 package monopoly.spielfelder;
 
-import java.util.*;
-
 /**
  * Diese Klasse stellt eine Straße dar, die von einem Spieler gekauft werden kann.
  *
@@ -34,9 +32,6 @@ public class Straße extends BesitzrechtFeld implements Spielfelder{
         this.kostenHotel = kostenHotel;
     }
 
-    /**
-     * @return die Anzahl der Haeuser
-     */
     public int getAnzahlHaeuser() {
         return anzahlHaeuser;
     }
@@ -45,9 +40,6 @@ public class Straße extends BesitzrechtFeld implements Spielfelder{
         this.anzahlHaeuser = anzahlHaeuser;
     }
 
-    /**
-     * @return die Anzahl der Hotels
-     */
     public int getAnzahlHotels() {
         return anzahlHotels;
     }
@@ -56,23 +48,14 @@ public class Straße extends BesitzrechtFeld implements Spielfelder{
         this.anzahlHotels = anzahlHotels;
     }
 
-    /**
-     * @return die Kosten eines Hauses
-     */
     public int getKostenHaus() {
         return kostenHaus;
     }
 
-    /**
-     * @return die Kosten eines Hotels 
-     */
     public int getKostenHotel() {
         return kostenHotel;
     }
 
-    /**
-     * @return die Nummer des Feldes 
-     */
     @Override
     public int getFeldnummer() {
          return feldnummer;

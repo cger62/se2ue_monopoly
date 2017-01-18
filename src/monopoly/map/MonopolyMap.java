@@ -21,30 +21,22 @@ import monopoly.spielfelder.Straße;
 import monopoly.spielfelder.Wasserwerk;
 
 /**
- *
+ * Diese Klasse realisiert das "Spielbrett" fuer Monopoly.
+ * Es werden alle Spielfelder initialisiert.
+ * 
+ * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public class MonopolyMap {
 
-    /**
-     * Default constructor
-     */
-    /**
-     *
-     */
     public static ArrayList<Spielfelder> spielfelder;
 
-    /**
-     *
-     */
     public static ArrayList<Spieler> spieler;
 
-    /**
-     *
-     */
     public static int anzahlSpieler;
 
     /**
-     *
+     * Erstellt eine neue Map: die Spielfelder werden initailisert und
+     * die gewuenschten Spieler werden angelegt.
      */
     public MonopolyMap() {
         try {
@@ -55,7 +47,6 @@ public class MonopolyMap {
             //SpielFelder Array initialisieren
             spielfelder = new ArrayList<>();
 
-            //StreamReader & Buffredreader
             InputStreamReader isr = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(isr);
 
@@ -106,7 +97,7 @@ public class MonopolyMap {
             spielfelder.add(wasserwerk);
 
             //Elektrizitätswerk-Feld
-            Elektrizitätswerk stromwerk = new Elektrizitätswerk(12, "Elektrizitätswerk", 3000, 1500, 0, "werk");
+            Elektrizitätswerk stromwerk = new Elektrizitätswerk(12, "Elektrizitätswerk", 3000, 1500, "werk");
 
             spielfelder.add(stromwerk);
 
@@ -124,7 +115,6 @@ public class MonopolyMap {
 
             //FreiParken Feld
             FreiParkenFeld freiparken = new FreiParkenFeld(20,"Frei-Parken");
-            //FreiParkenFeld.feldnummer = 21;
             spielfelder.add(freiparken);
 
             //Gefängnisfelder
@@ -229,6 +219,12 @@ public class MonopolyMap {
 
     }
 
+    /**
+     * Wenn ein Spieler nicht mehr genuegend Geld auf dem Konto hat, hat er das
+     * Spiel verloren und wird aus der Spielerliste entfernt.
+     * 
+     * @param name der Name des Spielers, der verloren hat
+     */
     public static void spielerVerloren(String name) {
 
         for (Spieler s : spieler) {
@@ -243,6 +239,13 @@ public class MonopolyMap {
 
     }
 
+    /**
+     * Ermoeglicht das Spielen von Monopoly.
+     * Die einzelnen Spielen sind nacheinander an der Reihe mit dem
+     * naechsten Spielzug.
+     * Bei jedem Spielzug erscheint eine entsprechende Ausgabe auf
+     * der Konsole.
+     */
     public void spielen() {
     
         System.out.println("//////////////// Spiel beginnt mit :"+spieler.size() +" Spielern ////////////////");
@@ -254,15 +257,12 @@ public class MonopolyMap {
             break;
 
         }
-            //int i = 0;
             for (Spieler s : spieler) {
                 
                 System.out.println("------------------------------------------------------------");
                 System.out.println("Spieler: " + s.getSpielfigur() + " ist an der Reihe");
                 s.wuerfeln();
                 System.out.println("------------------------------------------------------------");
-                
-                //i = +1;
                 
             }
         }

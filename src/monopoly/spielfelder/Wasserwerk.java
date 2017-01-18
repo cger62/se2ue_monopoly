@@ -1,8 +1,5 @@
 package monopoly.spielfelder;
 
-
-import java.util.*;
-
 /**
  * Diese Klasse stellt ein Wasserwerk dar, das für die Realisierung des Spiels benötigt wird. 
  *

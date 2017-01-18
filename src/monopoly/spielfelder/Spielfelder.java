@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package monopoly.spielfelder;
 
 /**
- *
- * @author cger
+ * Diese Klasse schreibt die zu implementierenden Methoden fuer die
+ * Spielfelder vor.
+ * 
+ * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public interface Spielfelder {
+    
    int  getFeldnummer();
+   
     String  getFeldname();
 }

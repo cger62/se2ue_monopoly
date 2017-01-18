@@ -9,9 +9,15 @@ public class Bahnhof extends BesitzrechtFeld implements Spielfelder {
 
     /**
      * Erzeugt einen neuen Bahnhof mit Hilfe der Super-Klasse BesitzrechtFeld.
+     * 
+     * @param feldnummer die Nummer des Feldes
+     * @param feldname der Name des Feldes
+     * @param grundstueckswert der Wert des Grundstuecks
+     * @param miete die Miete, die gezahlt werden muss
+     * @param farbe die Farbe des Feldes
      */
-    public Bahnhof(int feldnummer, String feldname, int grundstueckswert, int miete, String color) {
-        super(feldnummer,feldname,grundstueckswert,miete, color);
+    public Bahnhof(int feldnummer, String feldname, int grundstueckswert, int miete, String farbe) {
+        super(feldnummer,feldname,grundstueckswert,miete, farbe);
     }
     
     @Override

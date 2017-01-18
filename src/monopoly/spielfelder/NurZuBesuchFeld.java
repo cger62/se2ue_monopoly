@@ -1,8 +1,5 @@
 package monopoly.spielfelder;
 
-
-import java.util.*;
-
 /**
  * Diese Klasse stellt das NurZuBesuchfeld dar, das für die Realisierung des Spiels benötigt wird.
  *
@@ -24,9 +21,6 @@ public class NurZuBesuchFeld extends GefängnisFeld implements Spielfelder{
         this.feldnummer = feldnummer;
     }
 
-    /**
-     * @return die Nummer des Feldes
-     */
      @Override
     public int getFeldnummer() {
          return feldnummer;

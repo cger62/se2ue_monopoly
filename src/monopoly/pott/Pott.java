@@ -38,9 +38,7 @@ public class Pott {
         kontostand =+ einzahlung;
         System.out.println("Im Pott befinden sich: "+kontostand);
     }
-    /**
-     * @return den aktuellen Kontostand des Potts
-     */
+
     public static int getKontostand() {
         return kontostand;
     }

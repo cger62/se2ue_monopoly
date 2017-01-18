@@ -23,7 +23,9 @@ import monopoly.spielfelder.Straße;
 import monopoly.spielfelder.Wasserwerk;
 
 /**
- *
+ * Diese Klasse realisiert die Spieler, die am Monopoly beteiligt sind.
+ * 
+ * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public class Spieler {
 
@@ -40,9 +42,12 @@ public class Spieler {
     public int wuerfelZahl;
 
     public int aktuellesFeld = 0;
+    
     public Spielfelder aktuellesFeldName;
+    
     public HashMap<String, ArrayList> liste = new HashMap<>();
 
+    //die moeglichen Farben, die eine Strasse haben kann
     public ArrayList<Straße> braun = new ArrayList<>();
     public ArrayList<Straße> hellblau = new ArrayList<>();
     public ArrayList<Straße> pink = new ArrayList<>();
@@ -57,12 +62,16 @@ public class Spieler {
     InputStreamReader isr = new InputStreamReader(System.in);
     BufferedReader br = new BufferedReader(isr);
 
+    /**
+     * Erzeugt einen neuen Spieler und initialisiert die notwendigen Attribute.
+     * 
+     * @param spielfigur der Name des Spielers
+     */
     public Spieler(String spielfigur) {
 
         this.kontostand = 30000;
         this.spielfigur = spielfigur;
         this.istGefängnis = false;
-        //this.aktuellesFeld = 0;
 
         liste.put("braun", braun);
         liste.put("hellblau", hellblau);
@@ -87,7 +96,14 @@ public class Spieler {
     }
 
     /**
-     *
+     * Es wird eine zufaellige Zahl zwischen 1 und 12 generiert.
+     * Die gewurfelte Zahl wird auf der Konsole ausgegeben.
+     * 
+     * Je nachdem auf welchem Spielfeld der Spieler nach dem Wuerfeln
+     * landet, sind verschiedene Aktionen notwendig.
+     * 
+     * Der neue Kontostand des Spielers und das Feld, auf dem er sich
+     * befindet, werden auf der Konsole ausgegeben.
      */
     public void wuerfeln() {
 
@@ -114,7 +130,6 @@ public class Spieler {
                 ;
                 boolean einzahlen = einzahlen(1000);
                 if (!einzahlen) {
-                    //System.out.println("Du bist pleite und aus dem Spiel");
                     MonopolyMap.spielerVerloren(spielfigur);
                     return;
                 } else {
@@ -124,13 +139,11 @@ public class Spieler {
             }
 
         }
-        //System.out.println(this.aktuellesFeld);
         String[] worte = {"Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun", "Zehn", "Elf", "Zwölf"};
 
         wuerfelZahl = getRandomInteger(12, 1);
 
         this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl + 1;
-        //System.out.println(this.aktuellesFeld);
         if (this.aktuellesFeld > 39) {
             auszahlen(4000);
             System.out.println("Du gehst über Los und erhälst 4000 Mark");
@@ -145,7 +158,6 @@ public class Spieler {
         System.out.println(worte[wuerfelZahl] + " gewürfelt");
         aktuellesFeldName = spielfigurSetzen(this.aktuellesFeld);
         System.out.println("Du befindest dich auf Feld-Nr: " + (this.aktuellesFeld));
-//        System.out.println("Feld-Name: " + aktuellesFeldName.getFeldname());
         boolean check = false;
         for (Spielfelder s : felderInBesitz) {
             if (aktuellesFeldName.equals(s)) {
@@ -175,11 +187,10 @@ public class Spieler {
             if (aktuellesFeldName instanceof EreignisgemeinschaftsFeld) {
                 System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
                 EreignisgemeinschaftsFeld ereignis = (EreignisgemeinschaftsFeld) aktuellesFeldName;
-                EreignisgemeinschaftsKarte randomKarte = ereignis.randomKarte();
+                EreignisgemeinschaftsKarte randomKarte = ereignis.zufaelligeKarteGenerieren();
                 randomKarte.ereignis(this);
                 boolean einzahlen = einzahlen(0);
                 if (!einzahlen) {
-                    //System.out.println("Du bist pleite und aus dem Spiel");
                     MonopolyMap.spielerVerloren(spielfigur);
                 } else {
                     System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
@@ -193,7 +204,6 @@ public class Spieler {
                     System.out.println("Du musst 4000 Euro  Einkommenssteuer Zahlen");
                     boolean einzahlen = einzahlen(4000);
                     if (!einzahlen) {
-                        //System.out.println("Du bist pleite und aus dem Spiel");
                         MonopolyMap.spielerVerloren(spielfigur);
                     } else {
                         Pott.einzahlen(s.getSteuern());
@@ -206,7 +216,6 @@ public class Spieler {
                     System.out.println("Du musst 2000 Euro Zusatzsteuer Zahlen");
                     boolean einzahlen = einzahlen(2000);
                     if (!einzahlen) {
-                        //System.out.println("Du bist pleite und aus dem Spiel");
                         MonopolyMap.spielerVerloren(spielfigur);
                     } else {
                         Pott.einzahlen(s.getSteuern());
@@ -246,8 +255,11 @@ public class Spieler {
     }
 
     /**
-     * @param feldNummer
-     * @return
+     * Setzt die Spielfigur anhand der gewurfelten Zahl.
+     * 
+     * @param feldNummer das Feld, auf das die Spielfigur gesetzt werden muss
+     * 
+     * @return get das Spielfeld, auf dem sich der Spieler befindet
      */
     public Spielfelder spielfigurSetzen(int feldNummer) {
         for (int i = 0; i < MonopolyMap.spielfelder.size(); i++) {
@@ -263,7 +275,10 @@ public class Spieler {
     }
 
     /**
-     * @param feld
+     * Ermoeglicht das Kaufen von BesitzrechtFeldern, wenn der Spieler
+     * den entsprechenden Kaufpreis zahlen moechte/kann.
+     * 
+     * @param feld das Spielfeld, das gekauft werden soll
      */
     public void kaufen(BesitzrechtFeld feld) {
         try {
@@ -387,14 +402,16 @@ public class Spieler {
     }
 
     /**
-     * @param feld
+     * Ermoeglicht das Zahlen der Miete anhand des Feldes, auf dem sich der
+     * Spieler aktuell befindet.
+     * 
+     * @param felddas Spielfeld, auf dem sich der Spieler aktuell befindet
      */
     public void mieteZahlen(BesitzrechtFeld feld) {
         System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
         Spieler spieler = feld.getSpieler();
         boolean einzahlen = einzahlen(feld.getMiete());
         if (!einzahlen) {
-            //System.out.println("Du bist pleite und aus dem Spiel");
             MonopolyMap.spielerVerloren(spielfigur);
         } else {
             System.out.println("Du musst an " + feld.getSpieler().getSpielfigur() + " Miete in Höhe von " + feld.getMiete() + " zahlen (" + feld.getFeldname() + ")");
@@ -404,6 +421,13 @@ public class Spieler {
 
     }
 
+    /**
+     * Ermoeglicht das Bauen von Haeusern auf einem BesitzrechtFeld.
+     * 
+     * @param feld das Sielfeld, auf dem das Haus gebaut werden soll
+     * @throws IOException falls beim Bauen des Hauses ein allgemeiner
+     * Fehler auftritt
+     */
     public void hausBauen(BesitzrechtFeld feld) throws IOException {
         System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
         String color = feld.getFarbe();
@@ -411,10 +435,6 @@ public class Spieler {
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
             if (pair.getKey().equals(color)) {
-                /*ArrayList<Spielfelder> list = (ArrayList<Spielfelder>) pair.getValue();
-                Spielfelder letztesFeld = list.get(list.size() - 1);
-                if (!letztesFeld.equals(null)) {*/
-
                     if (feld instanceof Straße) {
                         System.out.println("Wieviele Häuser möchtest du auf der Straße:" + feld.feldname + " bauen?");
                         System.out.println("Ein Haus kostet: " + ((Straße) feld).getKostenHaus());
@@ -441,23 +461,23 @@ public class Spieler {
                         }
                     }
                 }
-            //}
-
         }
-
     }
 
-    /**
-     * @param anzahl
-     */
-    /**
-     * @return
-     */
     public int getKontostand() {
-        // TODO implement here
         return kontostand;
     }
 
+    /**
+     * Ueberprueft, ob das Zahlen des uebergebenen Betrags moeglich ist.
+     * Wenn ja wird der entsprechende Betrag an die Bank gezahlt.
+     * Wenn nicht, erfolgt eine Konsolenausgabe.
+     * @param i der Betrag, der an die Bank gezahlt werden soll
+     * 
+     * @return true, wenn das Einzahlen des Betrages moeglich ist
+     *         false, wenn das Zahlen des Betrages nicht moeglich ist, weil
+     * das Konto des Spielers nicht ausreichend gedeckt ist
+     */
     public boolean einzahlen(int i) {
         if (kontostand - i >= 0) {
             kontostand = kontostand - i;
@@ -469,11 +489,21 @@ public class Spieler {
         }
     }
 
+    /**
+     * Ermoeglicht das Auszahlen eines uebergebenen Betrages.
+     * 
+     * @param i der Betrat, der ausgezahlt werden soll
+     */
     public void auszahlen(int i) {
         kontostand = kontostand + i;
         Bank.auszahlen(i);
     }
 
+    /**
+     * Ermoeglicht das Bauen eines Hotels auf einer uebergebenen Strasse.
+     * 
+     * @param str die Strasse, auf der das Hotel gebaut werden soll
+     */
     private void hotelBauen(Straße str) {
         try {
             System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaeuser() / 4 + " Hotels bauen, wieviele möchtest du Bauen?");
@@ -495,6 +525,12 @@ public class Spieler {
         return spielfigur;
     }
 
+    /**
+     * Ermoeglicht das Aendern des Mietbetrages eines Bahnhofs anhand der
+     * Anzahl der Bahnhoefe. 
+     * Je mehr Bahnhoefe vorhanden sind, desto hoeher ist die zu zahlende
+     * Miete.
+     */
     private void mieteÄndernBahnhof() {
 
         if (bahnhoefe.size() == 2) {
@@ -520,6 +556,10 @@ public class Spieler {
         }
     }
 
+    /**
+     * Gibt allgemeine Informationen zum Spieler auf der Konsole aus.
+     * @return die aktuellen Statusinformationen
+     */
     public String meinStatus() {
         try {
             System.out.println("--------------------STATUS--------------------");
@@ -552,6 +592,13 @@ public class Spieler {
 
 
 
+    /**
+     * Ermoeglicht das Aendern der Miete einer Strasse anhand der 
+     * Haeuseranzahl und Hotelanzahl.
+     * 
+     * @param strassen die Strassen, bei denen die Miete geaendert
+     * werden soll
+     */
     private void mieteÄndernStraße(ArrayList<Straße> strassen) {
 
         for (Straße s : strassen) {
@@ -570,6 +617,14 @@ public class Spieler {
 
     }
 
+    /**
+     * Generiert eine Zufallszahl zwischen den uebergebenen Methodenparametern.
+     * 
+     * @param maximum die hoechste Zahl, die generiert werden kann
+     * @param minimum die niedrigste Zahl, die generiert werden kann
+     * 
+     * @return die Zufallszahl
+     */
     public static int getRandomInteger(int maximum, int minimum) {
         return ((int) (Math.random() * (maximum - minimum))) + minimum;
     }

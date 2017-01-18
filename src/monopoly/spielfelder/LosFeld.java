@@ -1,20 +1,21 @@
 package monopoly.spielfelder;
 
-
-import java.util.*;
-
 /**
+ *  Die Klasse realisiert das Startfeld des Spiels.
+ * Die Klasse implementiert das Interface Spielfelder.
  * 
+ * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public class LosFeld implements Spielfelder {
     
-    
-
-
 int feldnummer;
+
 String feldname;
     /**
-     * Default constructor
+     * Erzeugt ein LosFeld anhand der uebergebenen Methodenparameter.
+     * 
+     * @param feldnummer die Nummer des LosFeldes
+     * @param feldname der Name des Spielfeldes
      */
     public LosFeld(int feldnummer,String feldname) {
         this.feldnummer = feldnummer;
@@ -23,11 +24,6 @@ String feldname;
         
     }
 
-    /**
-     * @return den festgelegten Betrag beim Überschreiten des Losfeldes 
-     */
-  
-
     @Override
     public int getFeldnummer() {
         return feldnummer;
@@ -35,7 +31,7 @@ String feldname;
 
     @Override
     public String getFeldname() {
-        return feldname; //To change body of generated methods, choose Tools | Templates.
+        return feldname; 
     }
 
 }
