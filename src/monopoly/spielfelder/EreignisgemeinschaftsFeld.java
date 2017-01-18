@@ -49,4 +49,9 @@ public class EreignisgemeinschaftsFeld implements Spielfelder{
     public int getFeldnummer() {
          return feldnummer; //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public String getFeldname() {
+       return feldname;//To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -89,6 +89,7 @@ public class Spieler {
      *
      */
     public void wuerfeln() {
+       
         if (istGefängnis) {
             int zahl = (int) (Math.random() * 12) + 1;
             System.out.println("Du bist im Gefängnis, würfel eine " + zahl + "um raus zu kommen, du kannst dann in der nächsten Runde weiterspielen");
@@ -129,6 +130,7 @@ public class Spieler {
         System.out.println(worte[wuerfelZahl - 1] + " gewürfelt");
         Spielfelder sf = spielfigurSetzen(this.aktuellesFeld);
         System.out.println("Du befindest dich auf Feld-Nr: " + (this.aktuellesFeld));
+        System.out.println("Feld-Name: " + sf.getFeldname());
         boolean check = false;
         for (Spielfelder s : felderInBesitz) {
             if (sf.equals(s)) {
@@ -289,7 +291,7 @@ public class Spieler {
                     }
 
                 }
-
+System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
             }
         } catch (IOException ex) {
             Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);

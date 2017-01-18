@@ -19,8 +19,9 @@ public class Monopoly {
     public static void main(String[] args) {
         
     MonopolyMap m = new MonopolyMap();
-   
+    System.out.println("------------------------------");
     m.spielen();
+     System.out.println("------------------------------");
     }
     
 }

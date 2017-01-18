@@ -11,4 +11,5 @@ package monopoly.spielfelder;
  */
 public interface Spielfelder {
    int  getFeldnummer();
+    String  getFeldname();
 }

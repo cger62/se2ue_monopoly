@@ -2,6 +2,25 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="KLAUSUR PROGII"/>
+        <group name="KLAUSUR PROGII">
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/GefängnisFeld.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/EreignisgemeinschaftsFeld.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/Monopoly.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/Wasserwerk.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/NurZuBesuchFeld.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/bank/Bank.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/map/MonopolyMap.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/BesitzrechtFeld.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/Straße.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/FreiParkenFeld.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/karten/EreignisgemeinschaftsKarte.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/Spielfelder.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/LosFeld.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/pott/Pott.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/Bahnhof.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spieler/Spieler.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/SteuerFeld.java</file>
+            <file>file:/home/cger/NetBeansProjects/Monopoly/src/monopoly/spielfelder/Elektrizitätswerk.java</file>
+        </group>
     </open-files>
 </project-private>

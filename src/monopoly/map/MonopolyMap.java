@@ -111,27 +111,27 @@ public class MonopolyMap {
             spielfelder.add(stromwerk);
 
             //Steuer-Felder
-            SteuerFeld zusatzsteuer = new SteuerFeld(38, 2000);
+            SteuerFeld zusatzsteuer = new SteuerFeld(38,"Zusatzsteuer" ,2000);
             spielfelder.add(zusatzsteuer);
 
-            SteuerFeld einkommenssteuer = new SteuerFeld(4, 4000);
+            SteuerFeld einkommenssteuer = new SteuerFeld(4,"Einkommenssteuer", 4000);
 
             spielfelder.add(einkommenssteuer);
 
             // LosFeld
-            LosFeld losfeld = new LosFeld(0);
+            LosFeld losfeld = new LosFeld(0,"Los-Feld");
             spielfelder.add(losfeld);
 
             //FreiParken Feld
-            FreiParkenFeld freiparken = new FreiParkenFeld(20);
+            FreiParkenFeld freiparken = new FreiParkenFeld(20,"Frei-Parken");
             //FreiParkenFeld.feldnummer = 21;
             spielfelder.add(freiparken);
 
             //Gefängnisfelder
-            GefängnisFeld gefängnis = new GefängnisFeld(30);
+            GefängnisFeld gefängnis = new GefängnisFeld(30, "Gefängnis");
             spielfelder.add(gefängnis);
 
-            NurZuBesuchFeld besuchGefängnis = new NurZuBesuchFeld(10);
+            NurZuBesuchFeld besuchGefängnis = new NurZuBesuchFeld(10, "Nur zu Besuch im Gefängnis");
 
             spielfelder.add(besuchGefängnis);
 
@@ -250,15 +250,15 @@ public class MonopolyMap {
         }
 
         while (spieler.size() != 1) {
-            int i = 0;
+            //int i = 0;
             for (Spieler s : spieler) {
                 
-                System.out.println("------------------------------");
-                System.out.println("Spieler: " + s.getSpielfigur() + " ist an der Reihe");
-                spieler.get(i).wuerfeln();
                 
-                i = +1;
-                System.out.println("------------------------------");
+                System.out.println("Spieler: " + s.getSpielfigur() + " ist an der Reihe");
+                s.wuerfeln();
+                
+                //i = +1;
+                
             }
         }
 

@@ -12,12 +12,13 @@ public class LosFeld implements Spielfelder {
 
 
 int feldnummer;
+String feldname;
     /**
      * Default constructor
      */
-    public LosFeld(int feldnummer) {
+    public LosFeld(int feldnummer,String feldname) {
         this.feldnummer = feldnummer;
-      
+        this.feldname = feldname;
      
         
     }
@@ -30,6 +31,11 @@ int feldnummer;
     @Override
     public int getFeldnummer() {
         return feldnummer;
+    }
+
+    @Override
+    public String getFeldname() {
+        return feldname; //To change body of generated methods, choose Tools | Templates.
     }
 
 }

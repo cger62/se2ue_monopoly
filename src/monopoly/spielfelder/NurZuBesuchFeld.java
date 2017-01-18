@@ -13,8 +13,8 @@ public class NurZuBesuchFeld extends GefängnisFeld implements Spielfelder{
  //Default Constructor
   
 
-    public NurZuBesuchFeld(int feldnummer) {
-       super(feldnummer);
+    public NurZuBesuchFeld(int feldnummer, String feldname) {
+       super(feldnummer, feldname);
     }
 
     public void setFeldnummer(int feldnummer) {
