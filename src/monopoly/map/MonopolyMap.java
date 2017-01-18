@@ -250,7 +250,7 @@ public class MonopolyMap {
             
                 
         if (spieler.size() == 1) {
-            System.out.println("//////////////// Spiel beendet, Spieler :" + spieler.get(0) + " hat gewonnen ////////////////");
+            System.out.println("//////////////// Spiel beendet, Spieler :" + spieler.get(0).getSpielfigur() + " hat gewonnen ////////////////");
             break;
 
         }

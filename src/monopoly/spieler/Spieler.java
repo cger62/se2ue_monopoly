@@ -59,7 +59,7 @@ public class Spieler {
 
     public Spieler(String spielfigur) {
 
-        this.kontostand = 20000;
+        this.kontostand = 30000;
         this.spielfigur = spielfigur;
         this.istGefängnis = false;
         //this.aktuellesFeld = 0;
@@ -145,7 +145,7 @@ public class Spieler {
         System.out.println(worte[wuerfelZahl] + " gewürfelt");
         aktuellesFeldName = spielfigurSetzen(this.aktuellesFeld);
         System.out.println("Du befindest dich auf Feld-Nr: " + (this.aktuellesFeld));
-        System.out.println("Feld-Name: " + aktuellesFeldName.getFeldname());
+//        System.out.println("Feld-Name: " + aktuellesFeldName.getFeldname());
         boolean check = false;
         for (Spielfelder s : felderInBesitz) {
             if (aktuellesFeldName.equals(s)) {
@@ -250,7 +250,7 @@ public class Spieler {
      * @return
      */
     public Spielfelder spielfigurSetzen(int feldNummer) {
-        for (int i = 1; i < MonopolyMap.spielfelder.size(); i++) {
+        for (int i = 0; i < MonopolyMap.spielfelder.size(); i++) {
             Spielfelder get = MonopolyMap.spielfelder.get(i);
             if (get.getFeldnummer() == feldNummer) {
                 this.aktuellesFeld = feldNummer;
@@ -411,9 +411,9 @@ public class Spieler {
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
             if (pair.getKey().equals(color)) {
-                ArrayList<Spielfelder> list = (ArrayList<Spielfelder>) pair.getValue();
+                /*ArrayList<Spielfelder> list = (ArrayList<Spielfelder>) pair.getValue();
                 Spielfelder letztesFeld = list.get(list.size() - 1);
-                if (!letztesFeld.equals(null)) {
+                if (!letztesFeld.equals(null)) {*/
 
                     if (feld instanceof Straße) {
                         System.out.println("Wieviele Häuser möchtest du auf der Straße:" + feld.feldname + " bauen?");
@@ -441,7 +441,7 @@ public class Spieler {
                         }
                     }
                 }
-            }
+            //}
 
         }
 
@@ -476,14 +476,14 @@ public class Spieler {
 
     private void hotelBauen(Straße str) {
         try {
-            System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaeuser() / 4 + "Hotels bauen, wieviele möchtest du Bauen?");
+            System.out.println("Du kannst in der Straße: " + str.getFeldname() + " max. " + (int) str.getAnzahlHaeuser() / 4 + " Hotels bauen, wieviele möchtest du Bauen?");
             System.out.println("Ein Hotel kostet: " + str.getKostenHotel());
             int anzahl = Integer.parseInt(br.readLine());
             if (anzahl <= (int) str.getAnzahlHaeuser() / 4) {
                 str.setAnzahlHotels(anzahl);
 
                 einzahlen((str.getKostenHotel() * anzahl));
-                str.setAnzahlHaeuser(-(anzahl * 4));
+                str.setAnzahlHaeuser((anzahl * 4)*(-1));
             }
         } catch (IOException ex) {
             Logger.getLogger(Spieler.class.getName()).log(Level.SEVERE, null, ex);
@@ -550,8 +550,7 @@ public class Spieler {
         return "";
     }
 
-    public void kontoAltNeu() {
-    }
+
 
     private void mieteÄndernStraße(ArrayList<Straße> strassen) {
 
