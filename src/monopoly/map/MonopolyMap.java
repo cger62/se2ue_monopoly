@@ -57,8 +57,8 @@ public class MonopolyMap {
             anzahlSpieler = Integer.parseInt(br.readLine());
 
             //Überprüfung der min./max. Anzahl
-            if (anzahlSpieler > 8 || anzahlSpieler < 2) {
-                System.out.println("Es können nur maximal 8 Spieler teilnehmen, bitte korrekte Anzahl eingeben!");
+            while (anzahlSpieler > 8 || anzahlSpieler < 2) {
+                System.out.println("Es dürfen nicht weniger als 2 und nicht mehr als 8 Spieler teilnehmen, bitte korrekte Anzahl eingeben!");
                 anzahlSpieler = Integer.parseInt(br.readLine());
 
             }

@@ -405,7 +405,7 @@ public class Spieler {
      * Ermoeglicht das Zahlen der Miete anhand des Feldes, auf dem sich der
      * Spieler aktuell befindet.
      * 
-     * @param felddas Spielfeld, auf dem sich der Spieler aktuell befindet
+     * @param feld das Spielfeld, auf dem sich der Spieler aktuell befindet
      */
     public void mieteZahlen(BesitzrechtFeld feld) {
         System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
