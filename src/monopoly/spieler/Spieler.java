@@ -241,6 +241,8 @@ public class Spieler {
             }
            if ( eingabe.trim().toLowerCase().equals("ja")) {
                 if (einzahlen(feld.grundstueckswert)) {
+                    feld.istGekauft=true;
+                    feld.setSpieler(this);
                     felderInBesitz.add(feld);
                     switch (feld.getFarbe()) {
                         case "braun":
@@ -340,7 +342,8 @@ public class Spieler {
             System.out.println("Du bist pleite und aus dem Spiel");
             MonopolyMap.spielerVerloren(spielfigur);
         } else {
-            spieler.auszahlen(feld.getMiete());
+            System.out.println("Du musst an "+feld.getSpieler().getSpielfigur()+" Miete in Höhe von " +feld.getMiete() +" zahlen ("+feld.getFeldname()+")");
+           spieler.auszahlen(feld.getMiete());
             System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
         }
 
