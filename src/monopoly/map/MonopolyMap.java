@@ -66,18 +66,20 @@ public class MonopolyMap {
             //Spieler initialisieren
             for (int i = 1; i <= anzahlSpieler; i++) {
 
-                try {
-                    System.out.println("Wie heisst Spieler-Nr.: " + i + " ?");
+//                try {
+//                    System.out.println("Wie heisst Spieler-Nr.: " + i + " ?");
+//
+//                    String name = br.readLine();
 
-                    String name = br.readLine();
+                    spieler.add(new Spieler("Spieler"+i));
 
-                    spieler.add(new Spieler(name));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
-                }
+//                } catch (IOException ex) {
+//                    Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
+//                }
 
             }
+            
+            System.out.println("Es nehmen " + anzahlSpieler + " Spieler in dieser Runde teil.");
 
             //Bahnhofs-Felder
             Bahnhof nordbahnhof = new Bahnhof(25, "Nordbahnhof", 4000, 500, "bahnhof");
@@ -227,12 +229,14 @@ public class MonopolyMap {
      */
     public static void spielerVerloren(String name) {
 
-        for (Spieler s : spieler) {
+        List<Spieler> list = spieler;
+        for (Iterator<Spieler> iterator = list.iterator(); iterator.hasNext();) {
+            Spieler s = iterator.next();
             if (s.getSpielfigur().equals(name)) {
 
                Bank.einzahlen(s.getKontostand());
-                System.out.println(s.getSpielfigur() + " ist Pleite und wird aus der Liste der Speielr entfernt");
-                spieler.remove(s);
+                System.out.println(s.getSpielfigur() + " ist Pleite und wird aus der Liste der Spieler entfernt.");
+                iterator.remove();
                 anzahlSpieler = anzahlSpieler - 1;
             }
         }

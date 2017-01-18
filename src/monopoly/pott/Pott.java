@@ -11,7 +11,7 @@ import monopoly.bank.Bank;
  */
 public class Pott {
 
-    private static int kontostand;
+    public static int kontostand;
 
     public Pott() {
         kontostand = 0;

@@ -29,9 +29,9 @@ import monopoly.spielfelder.Wasserwerk;
  */
 public class Spieler {
 
-    private int kontostand;
+    public int kontostand;
 
-    private String spielfigur;
+    public String spielfigur;
 
     public boolean istGefängnis;
 
@@ -115,9 +115,9 @@ public class Spieler {
             boolean gefunden = false;
             for (int i = 0; i < 3; i++) {
                 wuerfel = getRandomInteger(12, 1);
-                System.out.println("Du hast " + wuerfel + " gefwuerfelt");
+                System.out.println("Du hast " + wuerfel + " gewuerfelt");
                 if (wuerfel == zahl) {
-                    System.out.println("Richtige Zahl ( " + wuerfel + " )du, kannst nächste runde weiterspielen");
+                    System.out.println("Richtige Zahl ( " + wuerfel + " ), du kannst nächste Runde weiterspielen");
                     istGefängnis = false;
                     gefunden = true;
                     return;
@@ -255,7 +255,7 @@ public class Spieler {
     }
 
     /**
-     * Setzt die Spielfigur anhand der gewurfelten Zahl.
+     * Setzt die Spielfigur anhand der uebergebenen Feldnummer.
      * 
      * @param feldNummer das Feld, auf das die Spielfigur gesetzt werden muss
      * 
@@ -484,7 +484,7 @@ public class Spieler {
             Bank.einzahlen(i);
             return true;
         } else {
-            System.out.println("Du hast leider nicht genug Geld für den Kauf");
+            System.out.println("Du hast leider nicht mehr genügend Geld.");
             return false;
         }
     }
