@@ -89,32 +89,32 @@ public class MonopolyMap {
             }
 
             //Bahnhofs-Felder
-            Bahnhof nordbahnhof = new Bahnhof(25, "Nordbahnhof", 25, 25, 25, "bahnhof");
+            Bahnhof nordbahnhof = new Bahnhof(25, "Nordbahnhof", 4000, 2000, 500, "bahnhof");
             spielfelder.add(nordbahnhof);
 
-            Bahnhof westbahnhof = new Bahnhof(15, "Westbahnhof", 25, 25, 25, "bahnhof");
+            Bahnhof westbahnhof = new Bahnhof(15, "Westbahnhof", 4000, 2000, 500, "bahnhof");
             spielfelder.add(westbahnhof);
 
-            Bahnhof suedbahnhof = new Bahnhof(5, "Südbahnhof", 25, 25, 25, "bahnhof");
+            Bahnhof suedbahnhof = new Bahnhof(5, "Südbahnhof", 4000, 2000, 500, "bahnhof");
             spielfelder.add(suedbahnhof);
 
-            Bahnhof hauptbahnhof = new Bahnhof(35, "Hauptbahnhof", 25, 25, 25, "bahnhof");
+            Bahnhof hauptbahnhof = new Bahnhof(35, "Hauptbahnhof", 4000, 2000, 500, "bahnhof");
             spielfelder.add(hauptbahnhof);
 
             //Wasserwerk-Feld
-            Wasserwerk wasserwerk = new Wasserwerk(28, "Wasserwerk", 25, 25, 25, "werk");
+            Wasserwerk wasserwerk = new Wasserwerk(28, "Wasserwerk", 3000, 1500, 0, "werk");
             spielfelder.add(wasserwerk);
 
             //Elektrizitätswerk-Feld
-            Elektrizitätswerk stromwerk = new Elektrizitätswerk(12, "Elektrizitätswerk", 25, 25, 25, "werk");
+            Elektrizitätswerk stromwerk = new Elektrizitätswerk(12, "Elektrizitätswerk", 3000, 1500, 0, "werk");
 
             spielfelder.add(stromwerk);
 
             //Steuer-Felder
-            SteuerFeld zusatzsteuer = new SteuerFeld(38, 25);
+            SteuerFeld zusatzsteuer = new SteuerFeld(38, 2000);
             spielfelder.add(zusatzsteuer);
 
-            SteuerFeld einkommenssteuer = new SteuerFeld(4, 24);
+            SteuerFeld einkommenssteuer = new SteuerFeld(4, 4000);
 
             spielfelder.add(einkommenssteuer);
 
@@ -221,10 +221,7 @@ public class MonopolyMap {
             Straße schlossallee = new Straße(39, "Schlossallee", 25, 25, 25, "dunkelblau", 25, 25);
             spielfelder.add(schlossallee);
 
-            for (Spielfelder s : spielfelder) {
-                System.out.println(s.getFeldnummer());
-
-            }
+          
 
         } catch (IOException ex) {
             Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
@@ -259,7 +256,9 @@ public class MonopolyMap {
                 System.out.println("------------------------------");
                 System.out.println("Spieler: " + s.getSpielfigur() + " ist an der Reihe");
                 spieler.get(i).wuerfeln();
+                
                 i = +1;
+                System.out.println("------------------------------");
             }
         }
 

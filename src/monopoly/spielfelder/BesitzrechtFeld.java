@@ -74,6 +74,10 @@ int feldnummer;
         return miete;
     }
     
+    public void setMiete(int miete) {
+        this.miete = miete;
+    }
+    
     //welchem Spieler gehört das Feld
     public Spieler getSpieler() {
         return spieler;

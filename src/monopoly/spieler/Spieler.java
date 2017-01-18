@@ -8,9 +8,19 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import monopoly.bank.Bank;
+import monopoly.karten.EreignisgemeinschaftsKarte;
 import monopoly.map.MonopolyMap;
+import monopoly.pott.Pott;
+import monopoly.spielfelder.Bahnhof;
 import monopoly.spielfelder.BesitzrechtFeld;
+import monopoly.spielfelder.Elektrizitätswerk;
+import monopoly.spielfelder.EreignisgemeinschaftsFeld;
+import monopoly.spielfelder.FreiParkenFeld;
+import monopoly.spielfelder.GefängnisFeld;
+import monopoly.spielfelder.NurZuBesuchFeld;
+import monopoly.spielfelder.SteuerFeld;
 import monopoly.spielfelder.Straße;
+import monopoly.spielfelder.Wasserwerk;
 
 /**
  *
@@ -48,7 +58,7 @@ public class Spieler {
 
     public Spieler(String spielfigur) {
 
-        this.kontostand = 1500;
+        this.kontostand = 20000;
         this.spielfigur = spielfigur;
         this.istGefängnis = false;
         //this.aktuellesFeld = 0;
@@ -71,24 +81,52 @@ public class Spieler {
         this.bank = bank;
     }
 
+    public void setKontostand(int kontostand) {
+        this.kontostand = kontostand;
+    }
+
     /**
      *
      */
     public void wuerfeln() {
-        System.out.println(this.aktuellesFeld);
+        if (istGefängnis) {
+            int zahl = (int) (Math.random() * 12) + 1;
+            System.out.println("Du bist im Gefängnis, würfel eine " + zahl + "um raus zu kommen, du kannst dann in der nächsten Runde weiterspielen");
+            int wuerfel;
+            boolean gefunden = false;
+            for (int i = 0; i < 3; i++) {
+                wuerfel = (int) (Math.random() * 12) + 1;
+                System.out.println("Du hast " + wuerfel + "gefwuerfelt");
+                if (wuerfel == zahl) {
+                    System.out.println("Richtige Zahl ( " + wuerfel + " )du, kannst nächste runde weiterspielen");
+                    istGefängnis = false;
+                    gefunden = true;
+                }
+
+            }
+            if (!gefunden) {
+                System.out.println("Leider war die richtige Zahl nicht dabei, du zahlst 1000 Euro und darfst nächste Runde weiterspielen");
+                istGefängnis = false;
+                einzahlen(1000);
+            }
+
+        }
+        //System.out.println(this.aktuellesFeld);
         String[] worte = {"Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun", "Zehn", "Elf", "Zwölf"};
-        wuerfelZahl = (int) (Math.random() * 12);
-        this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl+1;
-           System.out.println(this.aktuellesFeld);
+
+        wuerfelZahl = (int) (Math.random() * 12) + 1;
+
+        this.aktuellesFeld = this.aktuellesFeld + wuerfelZahl + 1;
+        //System.out.println(this.aktuellesFeld);
         if (this.aktuellesFeld > 39) {
             auszahlen(200);
             this.aktuellesFeld = this.aktuellesFeld - 39;
         }
-        if(this.aktuellesFeld == 40){
-        this.aktuellesFeld =0;
+        if (this.aktuellesFeld == 40) {
+            this.aktuellesFeld = 0;
         }
 
-        System.out.println(worte[wuerfelZahl] + " gewürfelt");
+        System.out.println(worte[wuerfelZahl - 1] + " gewürfelt");
         Spielfelder sf = spielfigurSetzen(this.aktuellesFeld);
         System.out.println("Du befindest dich auf Feld-Nr: " + (this.aktuellesFeld));
         boolean check = false;
@@ -99,11 +137,59 @@ public class Spieler {
         }
 
         if (!check) {
+            if (sf instanceof NurZuBesuchFeld) {
+                System.out.println("Zu Besuch im Gefängnis");
+
+            }
+
+            if (sf instanceof FreiParkenFeld) {
+                System.out.println("Glückwunsch, du bist auf Frei Parken und erhälst den gesamten Pott in Höhe von: " + Pott.getKontostand());
+                Pott.auszahlen(Pott.getKontostand());
+
+            }
+            if (sf instanceof GefängnisFeld) {
+                istGefängnis = true;
+                System.out.println("Du musst ins gefängnis");
+
+            }
+
+            if (sf instanceof EreignisgemeinschaftsFeld) {
+                EreignisgemeinschaftsFeld ereignis = (EreignisgemeinschaftsFeld) sf;
+                EreignisgemeinschaftsKarte randomKarte = ereignis.randomKarte();
+                randomKarte.ereignis(this);
+            }
+
+            if (sf instanceof SteuerFeld) {
+                SteuerFeld s = (SteuerFeld) sf;
+                if (s.getFeldnummer() == 4) {
+                    System.out.println("Du musst 4000 Euro  Einkommenssteuer Zahlen");
+                    Pott.einzahlen(s.getSteuern());
+                }
+                if (s.getFeldnummer() == 38) {
+                    System.out.println("Du musst 2000 Euro Zusatzsteuer Zahlen");
+                    Pott.einzahlen(s.getSteuern());
+                }
+            }
+
             if (sf instanceof BesitzrechtFeld) {
                 BesitzrechtFeld bf = (BesitzrechtFeld) sf;
 
                 if (bf.isGekauft) {
-                    mieteZahlen(bf);
+                    if (bf instanceof Straße || bf instanceof Bahnhof) {
+                        mieteZahlen(bf);
+                    }
+                    if (bf instanceof Wasserwerk) {
+                        Wasserwerk w = (Wasserwerk) bf;
+                        w.setMiete(wuerfelZahl * 80);
+                        mieteZahlen(w);
+
+                    }
+                    if (bf instanceof Elektrizitätswerk) {
+                        Elektrizitätswerk e = (Elektrizitätswerk) bf;
+                        e.setMiete(wuerfelZahl * 80);
+                        mieteZahlen(e);
+
+                    }
 
                 } else {
                     kaufen(bf);
@@ -122,8 +208,8 @@ public class Spieler {
 
             if (i == feldNummer) {
                 this.aktuellesFeld = feldNummer;
-             
-                return  MonopolyMap.spielfelder.get(i);
+
+                return MonopolyMap.spielfelder.get(i);
             }
 
         }
@@ -144,62 +230,58 @@ public class Spieler {
                     switch (feld.getColor()) {
                         case "braun":
                             braun.add(feld);
-                            if (braun.size()==2) {
+                            if (braun.size() == 2) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "hellblau":
                             hellblau.add(feld);
-                            if (hellblau.size()==3) {
+                            if (hellblau.size() == 3) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "pink":
                             pink.add(feld);
-                            if (pink.size()==3) {
+                            if (pink.size() == 3) {
                                 hausBauen(feld);
                                 break;
                             }
                         case "orange":
                             orange.add(feld);
-                            if (orange.size()==3) {
+                            if (orange.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "rot":
                             rot.add(feld);
-                            if (rot.size()==3) {
+                            if (rot.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "gelb":
                             gelb.add(feld);
-                            if (gelb.size()==3) {
+                            if (gelb.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "grün":
                             grün.add(feld);
-                            if (grün.size()==3) {
+                            if (grün.size() == 3) {
                                 hausBauen(feld);
                             }
                             break;
                         case "dunkelblau":
                             dunkelblau.add(feld);
-                            if (dunkelblau.size()==2);
+                            if (dunkelblau.size() == 2);
                             hausBauen(feld);
                             break;
                         case "bahnhof":
                             bahnhoefe.add(feld);
-                            if (bahnhoefe.size()==4) {
-                                
-                            }
+                            mieteÄndernBahnhof();
                             break;
                         case "werk":
                             werke.add(feld);
-                            if (werke.size()==2) {
-                               
-                            }
+
                             break;
                         default:
                             System.out.println("Feld konnte keiner Farbe/Kategorie zugeordnet werden");
@@ -245,15 +327,14 @@ public class Spieler {
 
                         Straße str = (Straße) feld;
                         if (einzahlen(str.getKostenHaus() * anzahl)) {
-                            str.setAnzahlHaueser(str.getAnzahlHaueser()+anzahl);
+                            str.setAnzahlHaueser(str.getAnzahlHaueser() + anzahl);
                             if (str.getAnzahlHaueser() + anzahl > 4) {
-                                System.out.println("Möchtest du " + ((str.getAnzahlHaueser()) - (str.getAnzahlHaueser() % 4)) + " deiner " + str.getAnzahlHaueser()+ "Häuser in Hotels umwandeln?");
+                                System.out.println("Möchtest du " + ((str.getAnzahlHaueser()) - (str.getAnzahlHaueser() % 4)) + " deiner " + str.getAnzahlHaueser() + "Häuser in Hotels umwandeln?");
                                 if (br.readLine().trim().toLowerCase().equals("ja")) {
                                     str.setAnzahlHaueser(str.getAnzahlHaueser() + anzahl);
                                     hotelBauen(str);
-                                }
-                                else {
-                              
+                                } else {
+
                                     System.out.println("Du hast für die Straße: " + str.getFeldname() + "," + anzahl + " Häuser gebaut, insgesamt hast du jetzt " + str.getAnzahlHaueser() + " Häuser");
 
                                 }
@@ -312,5 +393,27 @@ public class Spieler {
 
     public String getSpielfigur() {
         return spielfigur;
+    }
+
+    private void mieteÄndernBahnhof() {
+
+        if (bahnhoefe.size() == 2) {
+            for (Spielfelder s : bahnhoefe) {
+                Bahnhof b = (Bahnhof) s;
+                b.setMiete(b.getMiete() * 2);
+            }
+        }
+        if (bahnhoefe.size() == 3) {
+            for (Spielfelder s : bahnhoefe) {
+                Bahnhof b = (Bahnhof) s;
+                b.setMiete(b.getMiete() * 4);
+            }
+        }
+        if (bahnhoefe.size() == 4) {
+            for (Spielfelder s : bahnhoefe) {
+                Bahnhof b = (Bahnhof) s;
+                b.setMiete(b.getMiete() * 8);
+            }
+        }
     }
 }

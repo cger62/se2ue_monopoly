@@ -38,7 +38,9 @@ public class EreignisgemeinschaftsFeld implements Spielfelder{
     }
     
     public EreignisgemeinschaftsKarte randomKarte() {
-        int random = new Random().nextInt(karten.length);
+       
+        int random = new Random().nextInt(karten.length-1);
+         System.out.println(random);
         EreignisgemeinschaftsKarte result = (karten[random]); 
         return result;
     }

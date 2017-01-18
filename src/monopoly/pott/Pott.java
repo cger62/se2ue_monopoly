@@ -18,7 +18,7 @@ public class Pott {
     /**
      * 
      */
-    private int kontostand;
+    private static int kontostand;
 
 
     /**
@@ -31,7 +31,7 @@ public class Pott {
     /**
      * @param wert
      */
-   public  int auszahlen(int betrag) {
+   public  static int auszahlen(int betrag) {
         // TODO implement here
         kontostand =- betrag;
         if(kontostand<0){
@@ -47,13 +47,13 @@ public class Pott {
     /**
      * @param einzahlung
      */
-    public  void  einzahlen(int einzahlung) {
+    public static void  einzahlen(int einzahlung) {
         kontostand =+ einzahlung;
     }
     /**
      * @return
      */
-    public int getKontostand() {
+    public static int getKontostand() {
         // TODO implement here
         return 0;
     }
