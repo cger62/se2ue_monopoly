@@ -19,9 +19,9 @@ public class SteuerFeld implements Spielfelder {
     /**
      * Im Konstruktor wird ein Steuerfeld erzeugt mit folgenden Parametern:
      *
-     * @param feldnummer
-     * @param feldname
-     * @param steuern
+     * @param feldnummer die Nummer des Feldes
+     * @param feldname der Name des Feldes
+     * @param steuern die Summe der Steuern 
      */
     public SteuerFeld(int feldnummer, String feldname, int steuern) {
         this.feldnummer = feldnummer;
@@ -29,15 +29,24 @@ public class SteuerFeld implements Spielfelder {
         this.steuern = steuern;
     }
 
+    /**
+     * @return die Summe der Steuern
+     */
     public int getSteuern() {
         return steuern;
     }
 
+    /**
+     * @return die Nummer des Feldes 
+     */
     @Override
     public int getFeldnummer() {
         return feldnummer;
     }
 
+    /**
+     * @return den Namen des Feldes
+     */
     @Override
     public String getFeldname() {
         return feldname; //To change body of generated methods, choose Tools | Templates.

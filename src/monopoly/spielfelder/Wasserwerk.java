@@ -13,14 +13,13 @@ public class Wasserwerk extends BesitzrechtFeld implements Spielfelder{
     /**
      * Der Konstruktor erzeugt ein Wasserwerk mit folgenenden Parametern:
      * 
-     * @param feldnummer
-     * @param feldname
-     * @param grundstueckswert
-     * @param hypothek
-     * @param miete
-     * @param farbe
+     * @param feldnummer die Nummer des Feldes
+     * @param feldname der Name des Feldes
+     * @param grundstueckswert der Wert des Grundstuecks
+     * @param miete die Höhe der Miete
+     * @param farbe die Farbe des Feldes
      */
-    public Wasserwerk(int feldnummer, String feldname, int grundstueckswert, int hypothek, int miete, String farbe) {
+    public Wasserwerk(int feldnummer, String feldname, int grundstueckswert, int miete, String farbe) {
         super(feldnummer,feldname,grundstueckswert,miete,farbe );}
 
     @Override
