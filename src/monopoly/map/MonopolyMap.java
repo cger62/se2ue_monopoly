@@ -89,16 +89,16 @@ public class MonopolyMap {
             }
 
             //Bahnhofs-Felder
-            Bahnhof nordbahnhof = new Bahnhof(25, "Nordbahnhof", 4000, 2000, 500, "bahnhof");
+            Bahnhof nordbahnhof = new Bahnhof(25, "Nordbahnhof", 4000, 500, "bahnhof");
             spielfelder.add(nordbahnhof);
 
-            Bahnhof westbahnhof = new Bahnhof(15, "Westbahnhof", 4000, 2000, 500, "bahnhof");
+            Bahnhof westbahnhof = new Bahnhof(15, "Westbahnhof", 4000, 500, "bahnhof");
             spielfelder.add(westbahnhof);
 
-            Bahnhof suedbahnhof = new Bahnhof(5, "Südbahnhof", 4000, 2000, 500, "bahnhof");
+            Bahnhof suedbahnhof = new Bahnhof(5, "Südbahnhof", 4000, 500, "bahnhof");
             spielfelder.add(suedbahnhof);
 
-            Bahnhof hauptbahnhof = new Bahnhof(35, "Hauptbahnhof", 4000, 2000, 500, "bahnhof");
+            Bahnhof hauptbahnhof = new Bahnhof(35, "Hauptbahnhof", 4000, 500, "bahnhof");
             spielfelder.add(hauptbahnhof);
 
             //Wasserwerk-Feld
