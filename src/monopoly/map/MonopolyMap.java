@@ -234,6 +234,7 @@ public class MonopolyMap {
                 System.out.println(s.getSpielfigur() + " ist Pleite und wird aus der Liste der Speielr entfernt");
                 spieler.remove(s);
                 anzahlSpieler = anzahlSpieler - 1;
+                break;
             }
         }
 

@@ -11,4 +11,5 @@ public interface Spielfelder {
    int  getFeldnummer();
    
     String  getFeldname();
+    
 }
