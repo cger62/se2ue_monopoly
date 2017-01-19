@@ -1,14 +1,25 @@
 #Software-Engineering II - Monopoly
 
-Grundlegende Spielregeln:
-- erlaubte Spieleranzahl: 2-8
-- ein Spieler scheidet aus dem Spiel aus, sobald er kein Geld mehr auf dem Konto hat
-- der letzte bestehende Spieler gewinnt das Spiel
-- es gibt keine Hypotheken
-- um aus dem Gefängnis zu kommen, wird jedes Mal eine bestimmte Zahl festgelegt, die (zum Rauskommen) gewürfelt werden muss
-- beim Wasserwerk und Elektrizitätswerk muss nur eine festgelegte Summe gezahlt werden
+Es gelten die allgemeinen Monopoly Regeln, bis auf ein paar Sonderregeln:
+- Erlaubte Spieleranzahl: 2-8
+- Ein Spieler scheidet aus dem Spiel aus, sobald er keine Miete bzw. Steuern zahlen kann (es gibt keine Hypotheken oder Versteigerungen)
+- Es gibt nur einen Würfel mit zwölf Augen (kein Pasch möglich)
+- Wenn man sich im Gefängnis befindet, hat man drei Versuche, um eine bestimmte (jedes mal random generierte) Zahl zu würfeln. Gelingt dies, darf man das Gefängnis ohne weiteres verlassen. Wenn nicht, muss man erst 1000 zahlen und kommt dann erst wieder frei.
+- Sobald man alle Straßen einer Farbe besitzt, verdoppelt sich die Miete für alle Straßen der entsprechenden Farbe
+- Die Miete passt sich je nach gebauten Häusern/Hotels an (Für Häuser: aktuelle Miete * Anzahl Häuser * 5; für Hotels: aktuelle Miete * Anazahl Hotels * 10)
+- Beim Wasserwerk und Elektrizitätswerk muss nur eine festgelegte Summe gezahlt werden
+- Wenn eine Texteingabe mit "Ja/Nein" gefordert wird, kann man durch die Eingabe "status" seinen aktuellen Status einsehen
 
-Ansonsten gelten die bekannten Monopoly-Regeln.
-
-Um das Spiel zu starten, muss die main-Klasse Monopoly.java (im package monopoly) gestartet werden.
+Um das Spiel zu starten, muss die main-Klasse **Monopoly.java** (im package *monopoly*) gestartet werden.
 Das gesamte Spiel läuft von da an über die Konsole.
+
+
+Zudem sind folgende JUnit Tests vorhanden:
+- Im Paket **_Test Packages monopoly.map.MonopolyMapTest.java_**
+    - **Test 1:** ob bei einer korrekten Eingabe der Anzahl der Spielteilnehmer auch die entsprechende Anzahl von Spielern erstellt wird, ohne dass eine Fehlermeldung erscheint.
+    
+- Im Paket **_Test Packages monopoly.spieler.SpielerTest.java_**
+  - **Test 2:** ob dem Spieler das dreimalige Wuerfeln gestattet ist, sobald er sich im Gefaengnis befindet und ob er - egal ob er anschließend zahlen muss oder nicht - in der naechsten Runde wieder aus dem Gefaengnis entlassen wird.
+  - **Test 3:** ob ein Spieler mithilfe derspielfigurSetzen()-Methode beim Übergeben einer Feldnummer auch genau auf dem Feld mit dieser Nummer landet.
+  - **Test 4:** ob der Spieler korrekt aus dem Spiel ausscheidet, sobald er auf ein Feld kommt, dessen Miete/Steuern er nicht mehr zahlen kann.
+  - **Test 5:** ob der Spieler den gesamten Betrag aus dem Pott bekommt, sobald er auf das FreiParken-Feld kommt.
