@@ -21,22 +21,26 @@ import monopoly.spielfelder.Straße;
 import monopoly.spielfelder.Wasserwerk;
 
 /**
- * Diese Klasse realisiert das "Spielbrett" fuer Monopoly.
- * Es werden alle Spielfelder initialisiert.
- * 
+ * Diese Klasse realisiert das "Spielbrett" fuer Monopoly. Es werden alle
+ * Spielfelder initialisiert.
+ *
  * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public class MonopolyMap {
 
-    public static ArrayList<Spielfelder> spielfelder;
+    private static ArrayList<Spielfelder> spielfelder;
 
-    public static ArrayList<Spieler> spieler;
+    private static ArrayList<Spieler> spieler;
 
-    public static int anzahlSpieler;
+    private static int anzahlSpieler;
+
+    public static int getAnzahlSpieler() {
+        return anzahlSpieler;
+    }
 
     /**
-     * Erstellt eine neue Map: die Spielfelder werden initailisert und
-     * die gewuenschten Spieler werden angelegt.
+     * Erstellt eine neue Map: die Spielfelder werden initailisert und die
+     * gewuenschten Spieler werden angelegt.
      */
     public MonopolyMap() {
         try {
@@ -70,15 +74,13 @@ public class MonopolyMap {
 //                    System.out.println("Wie heisst Spieler-Nr.: " + i + " ?");
 //
 //                    String name = br.readLine();
-
-                    spieler.add(new Spieler("Spieler"+i));
+                spieler.add(new Spieler("Spieler" + i));
 
 //                } catch (IOException ex) {
 //                    Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
 //                }
-
             }
-            
+
             System.out.println("Es nehmen " + anzahlSpieler + " Spieler in dieser Runde teil.");
 
             //Bahnhofs-Felder
@@ -104,19 +106,19 @@ public class MonopolyMap {
             spielfelder.add(stromwerk);
 
             //Steuer-Felder
-            SteuerFeld zusatzsteuer = new SteuerFeld(38,"Zusatzsteuer" ,2000);
+            SteuerFeld zusatzsteuer = new SteuerFeld(38, "Zusatzsteuer", 2000);
             spielfelder.add(zusatzsteuer);
 
-            SteuerFeld einkommenssteuer = new SteuerFeld(4,"Einkommenssteuer", 4000);
+            SteuerFeld einkommenssteuer = new SteuerFeld(4, "Einkommenssteuer", 4000);
 
             spielfelder.add(einkommenssteuer);
 
             // LosFeld
-            LosFeld losfeld = new LosFeld(0,"Los-Feld");
+            LosFeld losfeld = new LosFeld(0, "Los-Feld");
             spielfelder.add(losfeld);
 
             //FreiParken Feld
-            FreiParkenFeld freiparken = new FreiParkenFeld(20,"Frei-Parken");
+            FreiParkenFeld freiparken = new FreiParkenFeld(20, "Frei-Parken");
             spielfelder.add(freiparken);
 
             //Gefängnisfelder
@@ -198,7 +200,7 @@ public class MonopolyMap {
             Straße goethestr = new Straße(29, "Goethestraße", 5600, 480, "gelb", 3000, 3000);
             spielfelder.add(goethestr);
 
-            Straße rathausplatz = new Straße(31, "Rathausplatz",6000, 520, "grün", 4000, 4000);
+            Straße rathausplatz = new Straße(31, "Rathausplatz", 6000, 520, "grün", 4000, 4000);
             spielfelder.add(rathausplatz);
 
             Straße hauptstr = new Straße(32, "Hauptstraße", 6000, 520, "grün", 4000, 4000);
@@ -207,13 +209,12 @@ public class MonopolyMap {
             Straße bahnhofsstr = new Straße(34, "Bahnhofstraße", 6400, 560, "grün", 4000, 4000);
             spielfelder.add(bahnhofsstr);
 
-            Straße parkstr = new Straße(37, "Parkstraße", 7000, 700 , "dunkelblau", 4000, 4000);
+            Straße parkstr = new Straße(37, "Parkstraße", 7000, 700, "dunkelblau", 4000, 4000);
             spielfelder.add(parkstr);
 
             Straße schlossallee = new Straße(39, "Schlossallee", 8000, 1000, "dunkelblau", 4000, 4000);
             spielfelder.add(schlossallee);
             System.out.println("//////////////// Spielbrett erfolgreich initialisiert ////////////////");
-          
 
         } catch (IOException ex) {
             Logger.getLogger(MonopolyMap.class.getName()).log(Level.SEVERE, null, ex);
@@ -224,19 +225,19 @@ public class MonopolyMap {
     /**
      * Wenn ein Spieler nicht mehr genuegend Geld auf dem Konto hat, hat er das
      * Spiel verloren und wird aus der Spielerliste entfernt.
-     * 
+     *
      * @param name der Name des Spielers, der verloren hat
      */
     public static void spielerVerloren(String name) {
 
-        List<Spieler> list = spieler;
-        for (Iterator<Spieler> iterator = list.iterator(); iterator.hasNext();) {
-            Spieler s = iterator.next();
+        ArrayList<Spieler> list = spieler;
+        for (Spieler s : list){
             if (s.getSpielfigur().equals(name)) {
 
-               Bank.einzahlen(s.getKontostand());
+                Bank.einzahlen(s.getKontostand());
                 System.out.println(s.getSpielfigur() + " ist Pleite und wird aus der Liste der Spieler entfernt.");
-                iterator.remove();
+                list.remove(s);
+                spieler = list;
                 anzahlSpieler = anzahlSpieler - 1;
                 break;
             }
@@ -245,32 +246,37 @@ public class MonopolyMap {
     }
 
     /**
-     * Ermoeglicht das Spielen von Monopoly.
-     * Die einzelnen Spielen sind nacheinander an der Reihe mit dem
-     * naechsten Spielzug.
-     * Bei jedem Spielzug erscheint eine entsprechende Ausgabe auf
-     * der Konsole.
+     * Ermoeglicht das Spielen von Monopoly. Die einzelnen Spielen sind
+     * nacheinander an der Reihe mit dem naechsten Spielzug. Bei jedem Spielzug
+     * erscheint eine entsprechende Ausgabe auf der Konsole.
      */
     public void spielen() {
-    
-        System.out.println("//////////////// Spiel beginnt mit :"+spieler.size() +" Spielern ////////////////");
-        while (spieler.size() >= 1) {
-            
-                
-        if (spieler.size() == 1) {
-            System.out.println("//////////////// Spiel beendet, Spieler :" + spieler.get(0).getSpielfigur() + " hat gewonnen ////////////////");
-            break;
 
-        }
+        System.out.println("//////////////// Spiel beginnt mit :" + spieler.size() + " Spielern ////////////////");
+        while (spieler.size() >= 1) {
+
+            if (spieler.size() == 1) {
+                System.out.println("//////////////// Spiel beendet, Spieler :" + spieler.get(0).getSpielfigur() + " hat gewonnen ////////////////");
+                break;
+
+            }
             for (Spieler s : spieler) {
-                
+
                 System.out.println("------------------------------------------------------------");
                 System.out.println("Spieler: " + s.getSpielfigur() + " ist an der Reihe");
                 s.wuerfeln();
                 System.out.println("------------------------------------------------------------");
-                
+
             }
         }
 
+    }
+
+    public static ArrayList<Spielfelder> getSpielfelder() {
+        return spielfelder;
+    }
+
+    public static ArrayList<Spieler> getSpieler() {
+        return spieler;
     }
 }

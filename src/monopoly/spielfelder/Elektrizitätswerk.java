@@ -1,21 +1,21 @@
 package monopoly.spielfelder;
 
+import monopoly.spieler.Spieler;
+
 /**
  * Diese Klasse repräsentiert ein Elektrizitätswerk, welches für das Spiel
- * benoetigt wird.
- * Die Klasse erbt von BesitzrechtFeld und implementier das Interface
- * Spielfelder.
- * 
+ * benoetigt wird. Die Klasse erbt von BesitzrechtFeld und implementier das
+ * Interface Spielfelder.
+ *
  * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
-
 public class Elektrizitätswerk extends BesitzrechtFeld implements Spielfelder {
 
     /**
-     * Erzeugt ein neues Elektrizitätswerk anhand der uebergebenen Werte.
-     * Die Methodenparameter werden ueber den Konstruktor von Besitzrechtfeld 
+     * Erzeugt ein neues Elektrizitätswerk anhand der uebergebenen Werte. Die
+     * Methodenparameter werden ueber den Konstruktor von Besitzrechtfeld
      * initialisiert.
-     * 
+     *
      * @param feldnummer die Nummer des Spielfeldes
      * @param feldname der Name des Spielfeldes
      * @param grundstueckswert der Wert des Grundstuecks
@@ -23,14 +23,14 @@ public class Elektrizitätswerk extends BesitzrechtFeld implements Spielfelder {
      * @param farbe die Farbe des Spielfeldes
      */
     public Elektrizitätswerk(int feldnummer, String feldname, int grundstueckswert, int miete, String farbe) {
-        super(feldnummer,feldname,grundstueckswert,miete,farbe);
+        super(feldnummer, feldname, grundstueckswert, miete, farbe);
     }
 
     @Override
     public int getFeldnummer() {
-         return feldnummer;
+        return feldnummer;
     }
-    
+
     @Override
     public String getFeldname() {
         return feldname;

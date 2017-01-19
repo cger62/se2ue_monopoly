@@ -54,11 +54,11 @@ public class SpielerTest {
         ByteArrayInputStream in = new ByteArrayInputStream("3".getBytes());
         System.setIn(in);
         MonopolyMap map = new MonopolyMap();
-        Spieler instance = map.spieler.get(2);
-        instance.istGefängnis = true;
+        Spieler instance = map.getSpieler().get(2);
+        instance.setIstGefängnis(true);
         instance.wuerfeln();
         boolean expResult = false;
-        boolean result = instance.istGefängnis;
+        boolean result = instance.istGefängnis();
         assertEquals(expResult, result);
     }
 
@@ -74,12 +74,12 @@ public class SpielerTest {
         ByteArrayInputStream in = new ByteArrayInputStream("3".getBytes());
         System.setIn(in);
         MonopolyMap map = new MonopolyMap();
-        Spieler instance = map.spieler.get(2);
-        instance.aktuellesFeld = 0;
-        int expResult = map.spielfelder.get(13).getFeldnummer(); //ANMERKUNG: Das Feld mit der Feldnummer 7 befindet sich an 14. Stelle im Spielfelder-Array (deshalb die 13)
+        Spieler instance = map.getSpieler().get(2);
+        instance.setAktuellesFeld(0);
+        int expResult = map.getSpielfelder().get(13).getFeldnummer(); //ANMERKUNG: Das Feld mit der Feldnummer 7 befindet sich an 14. Stelle im Spielfelder-Array (deshalb die 13)
         int result = instance.spielfigurSetzen(feldNummer).getFeldnummer();
         assertEquals(expResult, result);
-        System.out.println(instance.spielfigur + " sollte sich jetzt auf Feld Nummer " + expResult + " befinden. Aktelles Feld: " + result);
+        System.out.println(instance.getSpielfigur() + " sollte sich jetzt auf Feld Nummer " + expResult + " befinden. Aktelles Feld: " + result);
     }
 
     /**
@@ -92,13 +92,13 @@ public class SpielerTest {
         ByteArrayInputStream in = new ByteArrayInputStream("3".getBytes());
         System.setIn(in);
         MonopolyMap map = new MonopolyMap();
-        int spielerVorher = map.anzahlSpieler;
-        Spieler instance = map.spieler.get(2);
-        instance.kontostand = 50;
-        instance.aktuellesFeld = 32;
-        instance.mieteZahlen((BesitzrechtFeld) map.spielfelder.get(32));
+        int spielerVorher = map.getAnzahlSpieler();
+        Spieler instance = map.getSpieler().get(2);
+        instance.setKontostand(50);
+        instance.setAktuellesFeld(32);
+        instance.mieteZahlen((BesitzrechtFeld) map.getSpielfelder().get(32));
         int expResult = spielerVorher - 1;
-        int result = map.anzahlSpieler;
+        int result = map.getAnzahlSpieler();
         assertEquals(expResult, result);
         System.out.println("Es sind jetzt noch " + result + " Teilnehmer im Spiel.");
     }
@@ -114,13 +114,13 @@ public class SpielerTest {
         System.setIn(in);
         MonopolyMap map = new MonopolyMap();
         Pott pott = new Pott();
-        pott.kontostand = 5000;
-        Spieler instance = map.spieler.get(2);
-        instance.aktuellesFeldName = instance.spielfigurSetzen(20);;
-        if (instance.aktuellesFeldName instanceof FreiParkenFeld) {
+        pott.setKontostand(5000);
+        Spieler instance = map.getSpieler().get(2);
+        instance.setAktuellesFeldName(instance.spielfigurSetzen(20));
+        if (instance.getAktuellesFeldName() instanceof FreiParkenFeld) {
             System.out.println("Dein aktueller Kontostand beträgt: " + instance.getKontostand());
             System.out.println("Glückwunsch, du bist auf Frei Parken und erhälst den gesamten Pott in Höhe von: " + pott.getKontostand());
-            instance.kontostand = instance.kontostand + pott.auszahlen(pott.getKontostand());
+            instance.setKontostand(instance.getKontostand() + pott.auszahlen(pott.getKontostand()));
             System.out.println("Dein neuer Kontostand beträgt: " + instance.getKontostand());
         }
     }

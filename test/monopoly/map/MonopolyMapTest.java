@@ -18,30 +18,30 @@ import static org.junit.Assert.*;
  * @author Carsten Gericke, Liane Lin, Sali Hassan, Annika Schoettle
  */
 public class MonopolyMapTest {
-    
+
     public MonopolyMapTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Diese Methode testet, ob bei einer korrekten Eingabe der Anzahl der Spielteilnehmer
-     * auch die entsprechende Anzahl von Spielern erstellt wird, ohne dass eine
-     * Fehlermeldung erscheint.
+     * Diese Methode testet, ob bei einer korrekten Eingabe der Anzahl der
+     * Spielteilnehmer auch die entsprechende Anzahl von Spielern erstellt wird,
+     * ohne dass eine Fehlermeldung erscheint.
      */
     @Test
     public void testRichtigeAnzahlSpieler() {
@@ -50,8 +50,8 @@ public class MonopolyMapTest {
         System.setIn(in);
         MonopolyMap instance = new MonopolyMap();
         int expResult = 3;
-        int result = instance.spieler.size();
+        int result = instance.getSpieler().size();
         assertEquals(expResult, result);
     }
-    
+
 }
