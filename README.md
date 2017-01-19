@@ -19,7 +19,7 @@ Zudem sind folgende JUnit Tests vorhanden:
     - **Test 1:** ob bei einer korrekten Eingabe der Anzahl der Spielteilnehmer auch die entsprechende Anzahl von Spielern erstellt wird, ohne dass eine Fehlermeldung erscheint.
     
 - Im Paket **_Test Packages monopoly.spieler.SpielerTest.java_**
-  - **Test 2:** ob dem Spieler das dreimalige Wuerfeln gestattet ist, sobald er sich im Gefaengnis befindet und ob er - egal ob er anschließend zahlen muss oder nicht - in der naechsten Runde wieder aus dem Gefaengnis entlassen wird.
-  - **Test 3:** ob ein Spieler mithilfe derspielfigurSetzen()-Methode beim Übergeben einer Feldnummer auch genau auf dem Feld mit dieser Nummer landet.
+  - **Test 2:** ob dem Spieler das dreimalige Würfeln gestattet ist, sobald er sich im Gefängnis befindet und ob er - egal ob er anschließend zahlen muss oder nicht - für die nächste Runde wieder aus dem Gefängnis entlassen wird.
+  - **Test 3:** ob ein Spieler mithilfe der spielfigurSetzen()-Methode beim Übergeben einer Feldnummer auch genau auf dem Feld mit dieser Nummer landet.
   - **Test 4:** ob der Spieler korrekt aus dem Spiel ausscheidet, sobald er auf ein Feld kommt, dessen Miete/Steuern er nicht mehr zahlen kann.
   - **Test 5:** ob der Spieler den gesamten Betrag aus dem Pott bekommt, sobald er auf das FreiParken-Feld kommt.
