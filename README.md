@@ -2,13 +2,13 @@
 
 Es gelten die allgemeinen Monopoly Spielregeln, bis auf ein paar Sonderregeln:
 - Erlaubte Spieleranzahl: 2-8
-- Ein Spieler scheidet aus dem Spiel aus, sobald er keine Miete bzw. Steuern zahlen kann (es gibt keine Hypotheken oder Versteigerungen)
-- Es gibt nur einen Würfel mit zwölf Augen (kein Pasch möglich)
+- Ein Spieler scheidet aus dem Spiel aus, sobald er keine Miete bzw. Steuern zahlen kann (es gibt keine Hypotheken oder Versteigerungen).
+- Es gibt nur einen Würfel mit zwölf Augen (kein Pasch möglich).
 - Wenn man sich im Gefängnis befindet, hat man drei Versuche, um eine bestimmte (jedes mal random generierte) Zahl zu würfeln. Gelingt dies, darf man das Gefängnis ohne weiteres verlassen. Wenn nicht, muss man erst 1000 zahlen und kommt dann erst wieder frei.
-- Sobald man alle Straßen einer Farbe besitzt, verdoppelt sich die Miete für alle Straßen der entsprechenden Farbe
-- Die Miete passt sich je nach gebauten Häusern/Hotels an (für Häuser: aktuelle Miete * Anzahl Häuser * 5; für Hotels: aktuelle Miete * Anazahl Hotels * 10)
-- Beim Wasserwerk und Elektrizitätswerk muss nur eine festgelegte Summe gezahlt werden
-- Wenn eine Texteingabe mit "Ja/Nein" gefordert wird, kann man durch die Eingabe "status" seinen aktuellen Status einsehen
+- Sobald man alle Straßen einer Farbe besitzt, verdoppelt sich die Miete für alle Straßen der entsprechenden Farbe.
+- Die Miete passt sich je nach gebauten Häusern/Hotels an (für Häuser: aktuelle Miete * Anzahl Häuser * 5; für Hotels: aktuelle Miete * Anazahl Hotels * 10).
+- Beim Wasserwerk und Elektrizitätswerk muss nur eine festgelegte Summe gezahlt werden.
+- Wenn eine Texteingabe mit "Ja/Nein" gefordert wird, kann man durch die Eingabe "status" seinen aktuellen Status einsehen.
 
 Um das Spiel zu starten, muss die main-Klasse **Monopoly.java** (im package *monopoly*) gestartet werden.
 Das gesamte Spiel läuft von da an über die Konsole.
