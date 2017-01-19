@@ -29,9 +29,9 @@ import monopoly.spielfelder.Wasserwerk;
  */
 public class Spieler {
 
-    private int kontostand;
+    public int kontostand;
 
-    private String spielfigur;
+    public String spielfigur;
 
     public boolean istGefängnis;
 
@@ -101,7 +101,38 @@ public class Spieler {
      */
     public void wuerfeln() {
         if (istGefängnis) {
-            gefaengnisAktion();
+
+            //System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
+            int zahl = getRandomInteger(12, 1);
+            System.out.println("Du bist im Gefängnis, würfel eine " + zahl + " um raus zu kommen, du kannst dann in der nächsten Runde weiterspielen");
+            int wuerfel;
+            boolean gefunden = false;
+            for (int i = 0; i < 3; i++) {
+                wuerfel = getRandomInteger(12, 1);
+                System.out.println("Du hast " + wuerfel + " gewuerfelt");
+                if (wuerfel == zahl) {
+                    System.out.println("Richtige Zahl ( " + wuerfel + " ), du kannst nächste Runde weiterspielen");
+                    istGefängnis = false;
+                    gefunden = true;
+                    return;
+                }
+
+            }
+            if (!gefunden) {
+                System.out.println("Leider war die richtige Zahl nicht dabei, du zahlst 1000 Euro und darfst nächste Runde weiterspielen");
+                istGefängnis = false;
+                ;
+                boolean einzahlen = einzahlen(1000);
+                if (!einzahlen) {
+                    MonopolyMap.spielerVerloren(spielfigur);
+                    return;
+                } else {
+                    System.out.println("Dein neuer Kontostand beträgt: " + getKontostand());
+                    return;
+                }
+            }
+
+
         }
         String[] worte = {"Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun", "Zehn", "Elf", "Zwölf"};
 
@@ -229,8 +260,13 @@ public class Spieler {
     }
 
     /**
+<<<<<<< HEAD
      * Setzt die Spielfigur anhand der gewurfelten Zahl.
      *
+=======
+     * Setzt die Spielfigur anhand der uebergebenen Feldnummer.
+     * 
+>>>>>>> 7f651d735b80a66794950617a8ed235b6bf3790e
      * @param feldNummer das Feld, auf das die Spielfigur gesetzt werden muss
      *
      * @return get das Spielfeld, auf dem sich der Spieler befindet
@@ -378,8 +414,13 @@ public class Spieler {
     /**
      * Ermoeglicht das Zahlen der Miete anhand des Feldes, auf dem sich der
      * Spieler aktuell befindet.
+<<<<<<< HEAD
      *
      * @param felddas Spielfeld, auf dem sich der Spieler aktuell befindet
+=======
+     * 
+     * @param feld das Spielfeld, auf dem sich der Spieler aktuell befindet
+>>>>>>> 7f651d735b80a66794950617a8ed235b6bf3790e
      */
     public void mieteZahlen(BesitzrechtFeld feld) {
         System.out.println("Dein aktueller Kontostand beträgt: " + getKontostand());
@@ -457,7 +498,7 @@ public class Spieler {
             Bank.einzahlen(i);
             return true;
         } else {
-            System.out.println("Du hast leider nicht genug Geld für den Kauf");
+            System.out.println("Du hast leider nicht mehr genügend Geld.");
             return false;
         }
     }
