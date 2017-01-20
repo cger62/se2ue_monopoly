@@ -42,7 +42,7 @@ public class FreiParkenFeld implements Spielfelder {
     public void spielfeldAktion(Spieler s, Spielfelder f) {
         System.out.println("Dein aktueller Kontostand beträgt: " + s.getKontostand());
         System.out.println("Glückwunsch, du bist auf Frei Parken und erhälst den gesamten Pott in Höhe von: " + Pott.getKontostand());
-        s.setKontostand(s.getKontostand() + Pott.auszahlen(Pott.getKontostand()));
+        s.setKontostand(s.getKontostand() + Pott.auszahlen());
         System.out.println("Dein neuer Kontostand beträgt: " + s.getKontostand());
     }
 
