@@ -57,9 +57,8 @@ public class SpielerTest {
         Spieler instance = map.getSpieler().get(2);
         instance.setIstGefängnis(true);
         instance.wuerfeln();
-        boolean expResult = false;
         boolean result = instance.istGefängnis();
-        assertEquals(expResult, result);
+        assertFalse(result);
     }
 
     /**
@@ -99,6 +98,7 @@ public class SpielerTest {
         instance.mieteZahlen((BesitzrechtFeld) map.getSpielfelder().get(32));
         int expResult = spielerVorher - 1;
         int result = map.getAnzahlSpieler();
+        assertNotEquals(spielerVorher, result);
         assertEquals(expResult, result);
         System.out.println("Es sind jetzt noch " + result + " Teilnehmer im Spiel.");
     }
@@ -123,6 +123,7 @@ public class SpielerTest {
             instance.setKontostand(instance.getKontostand() + pott.auszahlen(pott.getKontostand()));
             System.out.println("Dein neuer Kontostand beträgt: " + instance.getKontostand());
         }
+        assertEquals(pott.kontostand, 0);
     }
 
 }
