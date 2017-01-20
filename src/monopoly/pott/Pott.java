@@ -24,9 +24,10 @@ public class Pott {
      * @param betrag der Betrag, der an den Spieler ausgezahlt werden muss
      * @return betrag der Betrag, der ausgezahlt wurde
      */
-    public static int auszahlen(int betrag) {
-
-        return betrag;
+    public static int auszahlen() {
+        int auszahlung = kontostand;
+        kontostand.setKontostand(0);
+        return auszahlung;
     }
 
     /**
