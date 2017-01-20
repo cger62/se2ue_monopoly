@@ -120,7 +120,7 @@ public class SpielerTest {
         if (instance.getAktuellesFeldName() instanceof FreiParkenFeld) {
             System.out.println("Dein aktueller Kontostand beträgt: " + instance.getKontostand());
             System.out.println("Glückwunsch, du bist auf Frei Parken und erhälst den gesamten Pott in Höhe von: " + pott.getKontostand());
-            instance.setKontostand(instance.getKontostand() + pott.auszahlen(pott.getKontostand()));
+            instance.setKontostand(instance.getKontostand() + pott.auszahlen());
             System.out.println("Dein neuer Kontostand beträgt: " + instance.getKontostand());
         }
         assertEquals(pott.kontostand, 0);
