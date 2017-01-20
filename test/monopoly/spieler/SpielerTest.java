@@ -10,6 +10,7 @@ import monopoly.map.MonopolyMap;
 import monopoly.pott.Pott;
 import monopoly.spielfelder.BesitzrechtFeld;
 import monopoly.spielfelder.FreiParkenFeld;
+import monopoly.spielfelder.Spielfelder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -117,13 +118,33 @@ public class SpielerTest {
         pott.setKontostand(5000);
         Spieler instance = map.getSpieler().get(2);
         instance.setAktuellesFeldName(instance.spielfigurSetzen(20));
-        if (instance.getAktuellesFeldName() instanceof FreiParkenFeld) {
-            System.out.println("Dein aktueller Kontostand beträgt: " + instance.getKontostand());
-            System.out.println("Glückwunsch, du bist auf Frei Parken und erhälst den gesamten Pott in Höhe von: " + pott.getKontostand());
-            instance.setKontostand(instance.getKontostand() + pott.auszahlen());
-            System.out.println("Dein neuer Kontostand beträgt: " + instance.getKontostand());
-        }
-        assertEquals(pott.kontostand, 0);
+        instance.getAktuellesFeldName().spielfeldAktion(instance, instance.getAktuellesFeldName());
+        assertEquals(pott.getKontostand(), 0);
+    }
+    
+    /**
+     * In dieser Methode wird getestet, ob Steuern korrekt in den Pott gezahlt
+     * werden, sobald ein Spieler auf ein SteuerFeld kommt.
+     */
+    @Test
+    public void testSteuerFeld() {
+        System.out.println("\n\nTest: SteuerFeld");
+        ByteArrayInputStream in = new ByteArrayInputStream("3".getBytes());
+        System.setIn(in);
+        MonopolyMap map = new MonopolyMap();
+        Pott pott = new Pott();
+        System.out.println("Im Pott befinden sich " + pott.getKontostand());
+        Spieler instance = map.getSpieler().get(2);
+        Spieler instance2 = map.getSpieler().get(0);
+        System.out.println(instance.getSpielfigur() + ":");
+        instance.setAktuellesFeldName(instance.spielfigurSetzen(4));
+        instance.getAktuellesFeldName().spielfeldAktion(instance, instance.getAktuellesFeldName());
+        System.out.println(instance2.getSpielfigur() + ":");
+        instance2.setKontostand(2000);
+        instance2.setAktuellesFeldName(instance2.spielfigurSetzen(4));
+        instance2.getAktuellesFeldName().spielfeldAktion(instance2, instance2.getAktuellesFeldName());
+        System.out.println("Es sind jetzt noch " + map.getAnzahlSpieler() + " Teilnehmer im Spiel.");
+        System.out.println("Im Pott befinden sich nun " + pott.getKontostand());
     }
 
 }
